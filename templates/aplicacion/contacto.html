@@ -1,0 +1,108 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Buscar -->
+			
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contacto</h2>
+          <p>Contáctanos</p>
+        </div>
+
+    
+    <!-- ======= Portfolio Details Section ======= -->
+    
+			<div class="container">										
+				{% if messages %}
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+							{% for message in messages %}
+							<div class="alert alert-{{ message.tags }}" role="alert">
+								<p>{{ message }}</p>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}
+							<div class="row">
+								<div class="col-md-4 box-item">
+									
+									<span> ¿Compartimos los mismos valores? <br> ¿Quieres ser parte de nuestro proyecto? <br> Déjanos un mensaje. </span><br> <br>
+									<h3>Llámanos:</h3> <br>
+									<p>+34 913 92 04 40</p>
+									<p>info@redJoven.org</p>
+								</div>
+								<div class="col-md-8">
+
+									
+									<form name="form1" method="post" action=""> {% csrf_token %}
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													{{ form.contact_name }}
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													{{ form.contact_email }}
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													{{ form.subject }}
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													{{ form.message }}
+												</div>						
+												<button type="submit" class="btn btn-skin btn-block recp get-started-btn scrollto" name="submitcontact" id="submitcontact"> <p class="font-weight-bold">Enviar</p> </button>
+											</div>
+										</div>
+									</form>
+
+
+								</div>
+							</div>
+				</div>
+			</div>
+		</section>
+	
+
+
+</main>
+        
+
+      
+  <script>
+		function Barrita() {
+			$('#con').addClass('active');
+        }
+		window.onload = Barrita
+    </script>
+
+					<!-----------------Content-------------------->
+						
+					
+
+{% endblock content %}	
+
+ 
+
+
+
+

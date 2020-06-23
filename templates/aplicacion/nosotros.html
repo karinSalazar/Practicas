@@ -1,0 +1,97 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Buscar -->
+			
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Nosotros</h2>
+          <p>A cerca de nosotros</p>
+        </div>
+         
+         <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <h4>Experiencia Vocacional en Empresa - EVE.</h4>
+            <p class="font-italic text-justify">        
+				El proyecto EVE son las siglas de Experiencia Vocacional en Empresa. Es una experiencia formativa y de desarrollo vocacional para jóvenes en riesgo de exclusión con edades de entre 16 y 21 años, llevada a cabo en un entorno empresarial con el fin de mejorar su empleabilidad, involucrando a las empresas en la formación y la integración de estos jóvenes a través de programas de Responsabilidad Social Corporativa, y tutorizada por un referente de la entidad y de la empresa. Se trata de un modelo alternativo para permitir que los jóvenes sigan formándose de manera activa y desarrollen habilidades socio-laborales a través del contacto directo con el mundo del trabajo.
+            </p>
+            <br/>
+            <br/>
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+          	<br/>
+            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <br/>
+            <h5>¿Qué jóvenes participan?</h5>
+            <br/>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Jóvenes en riesgo de exclusión social.</li>
+              <li><i class="ri-check-double-line"></i> Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</li>
+              <li><i class="ri-check-double-line"></i> Con una edad de entre 16 años y 21 años.</li>
+              <li><i class="ri-check-double-line"></i> Con documentación en regla.</li>
+            </ul>
+            <br/>
+             <h5>¿Como es una Experiencia Vocacional en la empresa?</h5>           
+            <p class="font-italic text-justify">
+              Durante un periodo entre 1 a 4 meses y con un máximo de 25 horas semanales, los jóvenes participantes realizaran las tareas propias de un puesto de trabajo, realizando un aprendizaje creciente de la profesión (quedando excluidas las tareas repetitivas y aquellas que puedan resultar peligrosas). Las tareas que realizará el joven han de ser consensuadas entre la empresa y la entidad social. En ningún caso podrán cubrir un puesto de trabajo, ni suponer un riesgo para el joven.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="owl-carousel clients-carousel">
+          <img src="{% static 'img/LogoExit.jpg' %}" alt="">
+          <img src="{% static 'img/LogoOpcion3.png' %}" alt="">
+          <img src="{% static 'img/LogoNorteJoven.jpg' %}" alt="">
+          <img src="{% static 'img/LogoVerde.png' %}" alt="">          
+          <img src="{% static 'img/LogoRueca.png' %}" alt="">
+          <img src="{% static 'img/LogoOpcion3.png' %}" alt="">
+          <img src="{% static 'img/LogoNorteJoven.jpg' %}" alt="">
+          <img src="{% static 'img/LogoRueca.png' %}" alt="">
+          <img src="{% static 'img/LogoExit.jpg' %}" alt="">
+          <img src="{% static 'img/LogoVerde.png' %}" alt="">
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+		 
+
+        </div>
+    </section>
+    
+
+	<script>
+		
+		
+		function Barrita() {
+			$('#nos').addClass('active');
+        }
+		window.onload = Barrita
+
+
+    </script>
+
+{% endblock content %}
+
+
+
+
+

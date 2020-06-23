@@ -1,0 +1,3 @@
+pip install whitenoise[brotli]
+
+$ pip install django-simple-history

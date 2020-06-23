@@ -1,0 +1,74 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Colaboradores</h2>
+          <ol>
+            <li>Sumando esfuerzos....</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    
+
+        <br/>
+
+        <div id="page-content">
+		<div class="box-content">
+			<div class="container">
+
+
+				<div class="row">
+					{% for a in colaboradores %}
+                    <div class="col-md-4 text-center animate-box">
+                    	<div class="item">
+								<img src="../../static/img/{{a.logo}}" class="img-responsive"/>
+							</div> 
+                        <div class="product">
+                        	                           
+                            <div class="product-grid" style="background-image:url(' ../../static/img/{{a.foto}}');">
+                                
+                            	<div class="inner">                            	                            
+
+                                </div>
+							</div>
+							<div class="desc">
+								<h3><a class= "text-uppercase" target="_blank" href="{{ a.link }}">{{ a.nombreColaborador }}</a></h3>
+								<p class="font-weight-normal text-justify">{{ a.mision }}</p>
+							</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+				</div>
+				<br/>
+			</div>
+		</div>
+		
+	</div>
+
+	<script>
+		function Barrita() {
+			$('#col').addClass('active');
+        }
+		window.onload = Barrita
+    </script>
+
+
+{% endblock content %}	
+
+ 
+
+
+
+

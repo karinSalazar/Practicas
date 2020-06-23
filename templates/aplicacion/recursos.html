@@ -1,0 +1,115 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Buscar -->
+			
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Recursos</h2>
+          <p>Nuestras Transferencias</p>
+        </div>
+        
+		<div class="input-group mb-3">
+			  <input type="text" class="form-control" placeholder="Buscar...">			  
+		</div>
+		
+
+		<form method="GET" action=".">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="title_contains" placeholder="Buscar..." />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>        
+        </div>
+    	</form>
+
+    <div class="row">
+        <ul>
+          {% for journal in queryset %}
+            <li>
+              {{ journal.title }}
+              <span>Author: {{ journal.author.name }}</span>
+              
+            </li>
+            <hr />
+          {% endfor %}
+        </ul>
+      </div>
+
+
+
+      
+
+        <div class="row"  id="myList">
+        	{% for r in res %}
+		          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+		            <div class="member" data-aos="fade-up" data-aos-delay="100">
+		              <div class="member-img">
+		                <img src="../../static{{r.imagen.url}}" class="img-fluid" alt="">
+		                <div class="social">
+		                    <a target ="_blank" class ="btn btn-skin recdescargas text-center" href= "../../static/img/{{r.archivo}}">
+							<i class="icofont-download"></i> </a>                  
+		                </div>
+		              </div>
+		              <div class="member-info">
+		                <h4 class="text-uppercase text-center">{{r.nombreRecurso}}</h4>
+		                <span>{{r.proyecto.nombreProyecto}}</span>
+		              </div>
+		            </div>
+		          </div>      
+           	{% endfor %}   
+        </div>
+        </div>
+    </section><!-- End Team Section -->
+    <section>
+
+     
+					<table>
+						<thead>
+							<tr>
+								<th>
+									{% if page_obj.has_next %}
+									<a class="btn btn-success" role="button" href="?page={{ page_obj.next_page_number }}">"Next"</a>
+									{% endif %}
+									{% if page_obj.has_previous %}
+									<a class="btn btn-success" role="button" href="?page={{ page_obj.previous_page_number }}">"Back"</a>
+									{% endif %}
+								</th>
+							</tr>
+						</thead>
+					</table> hola
+	</section>
+	 
+				
+
+	<script>
+		
+		
+		function Barrita() {
+			$('#rec').addClass('active');
+        }
+		window.onload = Barrita
+
+
+    </script>
+
+{% endblock content %}
+
+
+
+
+

@@ -1,0 +1,98 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Buscar -->
+			
+    <!-- ======= Portfolio Details Section ======= -->
+    <!-- ======= Services Section ======= -->
+			    <section id="services" class="services">
+			      <div class="container" data-aos="fade-up">
+
+				        <div class="section-title">
+				          <h2>Noticias</h2>
+				          <p>Últimas Noticias</p>
+				        </div>
+
+				        <div class="row">
+				        	{% for press in prensa %}
+					          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+					            <div class="icon-box">
+					              
+					              <div class="box-entry-inner">
+					                        <img src="../../static/img/{{press.imagen}}" class="img-responsive" />
+
+
+						               <div class="content">
+						             		<br/>
+							              <h3 class="pressname text-center text-uppercase"><a target="_blank" href="{{ p.link }}">{{press.titulo}}</a></h3><br/>
+							              <h6 class="text-justify">{{press.fecha}} by {{press.creado_por}}</h6>
+							              <p class="presstext text-justify">{{press.descripcion}}.</p>
+							              <a class="button button-skin" href="{{press.link}}" target="_blank">Leer Más</a>
+							           </div>
+						          </div>
+						          
+						        </div>
+					          </div>
+
+				           {% endfor %}       
+				        </div>
+				        <br/>
+
+			     
+    
+    	      
+
+       
+								<table class="text-center">
+									<thead>
+										<tr>
+											<th>
+															
+
+														{% if page_obj.has_next %}
+																<a class="get-started-btn" role="button" href="?page={{ page_obj.next_page_number }}"><p> Next </p> </a>
+														{% endif %}
+														{% if page_obj.has_previous %}
+																<a class="get-started-btn" role="button" href="?page={{ page_obj.previous_page_number }}"> <p> Back </p> </a>
+														{% endif %}
+
+											</th>
+										</tr>
+									</thead>
+								</table>
+
+
+
+						 </div>
+			    </section><!-- End Services Section -->
+
+							
+
+
+  </main><!-- End #main -->
+  <script>
+		function Barrita() {
+			$('#not').addClass('active');
+        }
+		window.onload = Barrita
+    </script>
+
+					<!-----------------Content-------------------->
+						
+					
+
+{% endblock content %}	
+
+ 
+
+
+
+

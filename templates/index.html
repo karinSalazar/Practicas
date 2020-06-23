@@ -1,0 +1,883 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Red de Empleo</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/logo_red.jpg' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <link href="{% static 'css/zerogrid.css' %}" rel="stylesheet" media="all" type="text/css">
+  <link href="{% static 'css/style2.css' %}" rel="stylesheet" media="all" type="text/css">
+
+  <link href="{% static 'css/style3.css' %}" rel="stylesheet" media="all" type="text/css">
+  <link href="{% static 'css/animate.css' %}" rel="stylesheet" media="all" type="text/css">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> 
+  <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+
+  <link href="{% static 'css/jquery.mb.ytplayer.min.css' %}" rel="stylesheet" media="all" type="text/css">
+  
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Gp - v2.0.0
+  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html"><img src="{% static 'img/logo_red.jpg' %}"></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{% url 'inicio' %}">Home</a></li>
+          <li id="nos"><a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
+
+          <li id="pro"class="drop-down"><a href="#">Proyectos</a>
+            <ul>
+              {% for prog in proyectos %}
+              <li><a href="{% url 'aplicacion:proyecto' prog.id %}">{{prog.nombreProyecto}}</a></li>
+              {% endfor %}             
+            </ul>
+          </li>
+          <li id="rec"><a href="{% url 'aplicacion:recurso'  %}">Recursos</a></li>
+          <li id="col"><a href="{% url 'aplicacion:colaborador'  %}">Colaboradores</a></li>  
+          <li id="not"><a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>       
+          <li id="con"><a href="{% url 'aplicacion:contacto'  %}">Contacto</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+
+      <a href="#" class="get-started-btn scrollto">Usuario</a>
+
+    </div>
+  </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+
+
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
+          <h2>We are team of talanted digital marketers</h2>
+        </div>
+      </div>
+
+      <div class="row mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-2 col-md-4 col-6">
+          <div class="icon-box">
+            <i class="ri-store-line"></i>
+            <h3><a href=""><img src="{% static 'img/LogoVerde.png' %}"></a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6 ">
+          <div class="icon-box">
+            <i class="ri-bar-chart-box-line"></i>
+            <h3><a href=""><img src="{% static 'img/LogoOpcion3.png' %}"></a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="ri-calendar-todo-line"></i>
+            <h3><a href=""><img src="{% static 'img/LogoNorteJoven.jpg' %}"></a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6 mt-4 mt-xl-0">
+          <div class="icon-box">
+            <i class="ri-paint-brush-line"></i>
+            <h3><a href=""><img src="{% static 'img/LogoExit.jpg' %}"></a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4 col-6 mt-4 mt-xl-0">
+          <div class="icon-box">
+            <i class="ri-database-2-line"></i>
+            <h3><a href="">Nemos Enimade</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+ 
+
+   <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="image col-lg-6" style="background-image: url({% static 'img/features.jpg' %});" data-aos="fade-right"></div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-receipt"></i>
+              <h4>Est labore ad</h4>
+              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-cube-alt"></i>
+              <h4>Harum esse qui</h4>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-images"></i>
+              <h4>Aut occaecati</h4>
+              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-shield"></i>
+              <h4>Beatae veritatis</h4>
+              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Features Section -->
+
+    <!--agregado start-->
+
+    <section class="content-box box-2 box-style-1">
+        <div class="zerogrid-fluid">
+          <div class="wrap-box">
+            <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+              <h2>Projects Gallery</h2>
+              <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
+            </div>
+            <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
+              <div class="row">
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/1.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/2.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/3.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/4.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/5.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/6.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/7.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/8.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+    <!--agregado fin-->
+
+    
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>Call To Action</h3>
+          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a class="cta-btn" href="#">Call To Action</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row no-gutters">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+            <div class="content d-flex flex-column justify-content-center">
+              <h3>Voluptatem dignissimos provident quasi</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              </p>
+              <div class="row">
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="icofont-simple-smile"></i>
+                    <span data-toggle="counter-up">65</span>
+                    <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="icofont-document-folder"></i>
+                    <span data-toggle="counter-up">85</span>
+                    <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="icofont-clock-time"></i>
+                    <span data-toggle="counter-up">12</span>
+                    <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="icofont-award"></i>
+                    <span data-toggle="counter-up">15</span>
+                    <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="owl-carousel testimonials-carousel">
+
+          <div class="testimonial-item">
+            <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+            <h3>Saul Goodman</h3>
+            <h4>Ceo &amp; Founder</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+            <h3>Sara Wilsson</h3>
+            <h4>Designer</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+            <h3>Jena Karlis</h3>
+            <h4>Store Owner</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+            <h3>Matt Brandon</h3>
+            <h4>Freelancer</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+          <div class="testimonial-item">
+            <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+            <h3>John Larson</h3>
+            <h4>Entrepreneur</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Check our Team</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="member-img">
+                <img src="{% static 'img/team/team-1.jpg' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Executive Officer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="member-img">
+                <img src="{% static 'img/team/team-2.jpg' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Product Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="member-img">
+                <img src="{% static 'img/team/team-3.jpg' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>CTO</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="member-img">
+                <img src="{% static 'img/team/team-4.jpg' %}" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!--agregado frase start-->
+
+    <section class="content-box box-2 box-style-2">
+        <div class="zerogrid">
+          <div class="wrap-box"><!--Start Box-->
+            <div class="content wow fadeInLeft" data-wow-delay=".1s" data-wow-duration="1s">
+              <div class="row">
+                <div class="sm-1-2 offset-sm-2-4">
+                  <blockquote><p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet vultatup duista.</p></blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!--fin agregado-->
+
+    <!--agregado start-->
+
+    <!-----------------content-box-4-------------------->
+      <section class="content-box box-4">
+        <div class="zerogrid-fluid">
+          <div class="wrap-box">
+            <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+              <h2>Projects Gallery</h2>
+              <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
+            </div>
+            <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
+              <div class="row">
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/12.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/13.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/14.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg-1-4 md-1-3 sm-1-2">
+                  <div class="portfolio-box zoom-effect">
+                    <img src="{% static 'img/15.jpg' %}" class="img-responsive" alt="">
+                    <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                        <div class="project-name">
+                          Project Name
+                        </div>
+                        <div class="project-category">
+                          Category
+                        </div>
+                        <div class="project-button">
+                          <a href="single.html" class="button button-skin">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-----------------content-box-5-------------------noticias----->
+        
+
+
+       
+      <section class="content-box box-5">
+        <div class="zerogrid-fluid">
+          <div class="wrap-box"><!--Start Box-->
+            <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
+              <h3>Últimas Noticias</h3>                      
+              <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
+            </div>
+            <div class="content wow fadeInRight" data-wow-delay=".1s" data-wow-duration="1s">
+              
+             
+
+                <div class="owl-carousel">
+                                          
+
+                {% for press in prensa %}
+                <div class="sm-1-3">
+                  
+                  <div class="wrap-col">
+                    <div class="box-entry">
+                       
+                      <div class="box-entry-inner objetfit">
+                        <img src="../../static/img/{{press.imagen}}" class="img-responsive" />
+                        <div class="entry-details">
+                          <div class="entry-des">
+                            <span>{{press.fecha}}</span>
+                            <h3 class="pressname text-center text-uppercase"><a target="_blank" href="{{press.link}}">{{press.titulo}}</a></h3>
+                            <p class="presstext text-justify">{{press.descripcion}}.</p>
+                            <a class="button button-skin" href="{{press.link}}" target="_blank">Leer Más</a>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+
+                 {% endfor %}
+             
+             </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+                  
+      <!-----------------content-box-6-------------------->
+      <section class="content-box box-6 box-style-3">
+        <div class="zerogrid-fluid">
+          <div class="wrap-box"><!--Start Box-->
+            <div class="content wow fadeInLeft" data-wow-delay=".1s" data-wow-duration="1s">
+              
+              
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <!--agregado fin-->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contacto</h2>
+          <p>Contáctanos</p>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Correo:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="icofont-phone"></i>
+                <h4>Teléfono:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form name="form1" method="post" action=""> {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    {{ form.contact_name }}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    {{ form.contact_email }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    {{ form.subject }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    {{ form.message }}
+                  </div>            
+                  <button type="submit" class="btn btn-skin btn-block recp get-started-btn scrollto" name="submitcontact" id="submitcontact"> <p class="font-weight-bold">Enviar</p> </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3 class="logo"><img src="{% static 'img/logo_red.jpg' %}"></h3>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Enlaces Útiles</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'aplicacion:recurso'  %}">Recursos</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'aplicacion:colaborador'  %}">Colaboradores</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Política. Privac.</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Colaboradores</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://larueca.info/">Asociación La Rueca</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://tomillo.org/">Fundación Tomillo</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://fundacionexit.org/">Fundación Exit</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://opcion3.es/">Opción 3</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://nortejoven.org/">Empleo Norte Joven</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
