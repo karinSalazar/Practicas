@@ -25,9 +25,7 @@ class Video(models.Model):
 class Colaborador(models.Model):
 	nombreColaborador = models.CharField(max_length=40)
 	link = models.URLField(max_length=500,null=True)
-	logo = models.ImageField(upload_to ='ColaboradorL/',null=True)
-	foto = models.ImageField(upload_to ='ColaboradorF/',null=True)
-	mision = models.CharField(max_length=400,blank=True,null=True)
+	logo = models.ImageField(upload_to ='Colaborador/',null=True)
 	fecha = models.DateField(null=True)
 	
 	class Meta:
