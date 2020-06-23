@@ -2,24 +2,58 @@ from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
 from .models import *
 
+from django.utils.html import format_html
+
+
+
 admin.site.register(Video)
 admin.site.register(Colaborador)
 admin.site.register(Entidad)
-admin.site.register(Recurso)
 
 
 
+
+
+@admin.register(Recurso)
+class RecursoAdmin(admin.ModelAdmin):
+    list_display = ("id", "nombreRecurso", "custom_github_profile_url", "status")
+    search_fields = ['nombreRecurso']
+
+
+    def custom_github_profile_url(self, obj):
+        return format_html(
+        '<a  href="{0}" class="button">Archivo</a>&nbsp;',
+        obj.archivo
+        )
+
+    custom_github_profile_url.short_description = 'Ver Archivo'
+    custom_github_profile_url.allow_tags = True
+
+
+
+
+
+@admin.register(Proyecto)
 class PollHistoryAdmin(SimpleHistoryAdmin):
     list_display = ["id", "nombreProyecto", "año", "proyecto_del_año"]
     #history_list_display = ["proyecto_del_año"]
     history_list_display = ["status"]
     search_fields = ['nombreProyecto']
     
-admin.site.register(Proyecto, PollHistoryAdmin)
+#admin.site.register(Proyecto, PollHistoryAdmin)
 
 
 
+
+
+@admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ("order", "fecha", "titulo")
+
+
+    def order_count(self, obj):
+        return obj._order_count
+
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'creado_por':
             kwargs['queryset'] = User.objects.filter(username=request.user.username)
@@ -36,9 +70,14 @@ class NoticiaAdmin(admin.ModelAdmin):
         request.GET = data
         return super(NoticiaAdmin, self).add_view(request, form_url="", extra_context=extra_context)
 
-admin.site.register(Noticia, NoticiaAdmin)
 
 
+
+
+
+
+
+    
 
 """class PostImageAdmin(admin.StackedInline):
     model = Imagen

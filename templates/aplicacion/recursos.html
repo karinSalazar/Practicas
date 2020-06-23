@@ -16,20 +16,16 @@
           <h2>Recursos</h2>
           <p>Nuestras Transferencias</p>
         </div>
-        
-		<div class="input-group mb-3">
-			  <input type="text" class="form-control" placeholder="Buscar...">			  
-		</div>
-		
-
-		<form method="GET" action=".">
+      
+		<form method="GET" action="{% url 'aplicacion:recurso'  %}">
+			{% csrf_token %}
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="title_contains" placeholder="Buscar..." />
-                    <span class="input-group-append">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="q" id="buscador" placeholder="Escribe el nombre del proyecto o el recurso..." />
+                      <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
-                            <i class="fa fa-search"></i>
+                            <i class="icofont-search-2"></i>
                         </div>
                     </span>
                 </div>
@@ -37,22 +33,7 @@
         </div>
     	</form>
 
-    <div class="row">
-        <ul>
-          {% for journal in queryset %}
-            <li>
-              {{ journal.title }}
-              <span>Author: {{ journal.author.name }}</span>
-              
-            </li>
-            <hr />
-          {% endfor %}
-        </ul>
-      </div>
-
-
-
-      
+   
 
         <div class="row"  id="myList">
         	{% for r in res %}

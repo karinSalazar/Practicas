@@ -10,6 +10,9 @@ from django.http import HttpResponse
 from random import shuffle
 
 
+from django.db.models import Q
+
+
 
 
 class Inicio(SuccessMessageMixin, FormView):
@@ -72,15 +75,19 @@ class Resources(ListView):
     context_object_name= 'res' 
     queryset = Recurso.objects.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(Resources, self).get_context_data(**kwargs)
-        context['proyectos'] = Proyecto.objects.all()
-        return context
-
+    
     def year_archive(request, nombreRecurso):
         a_list = Recurso.objects.filter(pub_date__year=nombreRecurso)
         context = {'year': nombreRecurso, 'article_list': a_list}
         return render(request, 'aplicacion/recursos.html', context)
+
+
+    def busqueda(self):
+        q = request.GET.get('q', '')
+        querys = (Q(proyecto__nombreProyecto__icontains=q) | Q(proyecto__nombreProyecto__icontains=q))
+        querys |= Q(nombreRecurso__icontains=q)
+        recursos = Recurso.objects.filter(querys)
+        return render(request, 'aplicacion/recursos.html', {'res': recursos})
     
     """def Buscar(request):
                                 if request.GET["dow"]:
@@ -91,6 +98,10 @@ class Resources(ListView):
                                     mensaje = "No has introducido nada"
                                 return HttpResponse(mensaje)
             """
+    def get_context_data(self, **kwargs):
+        context = super(Resources, self).get_context_data(**kwargs)
+        context['proyectos'] = Proyecto.objects.all()
+        return context
 
     
 

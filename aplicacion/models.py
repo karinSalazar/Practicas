@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
-
 from simple_history.models import HistoricalRecords
+
+from django.db.models import Count
 
 
 
@@ -101,6 +102,7 @@ class Recurso(models.Model):
 	link = models.URLField(null=True, blank=True)
 	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, null=True)
 	imagen = models.ImageField(upload_to ='recursos/', default = 'descarga.jpg')
+	status =models.BooleanField(default=True,verbose_name='status')
 
 
 	class Meta:
