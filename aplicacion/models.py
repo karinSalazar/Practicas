@@ -53,6 +53,23 @@ class Entidad(models.Model):
 
 
 
+class Proyecto_del_año(models.Model):
+	titulo = models.CharField(max_length=40,null=True)
+	año = models.DateTimeField('fecha')
+	descripcion = models.CharField(max_length=300,null=True)
+	proyecto_del_año =models.BooleanField(default=True,verbose_name='proyecto_del_año')
+	
+
+	
+	class Meta:
+		verbose_name = 'Proyecto_del_año'
+		verbose_name_plural = 'Proyectos_del_año'
+		ordering = ['año']
+
+	def __str__(self):
+		return str(self.titulo)
+
+
 
 class Proyecto(models.Model):
 	order = models.IntegerField(blank=True, null=True)
@@ -60,7 +77,9 @@ class Proyecto(models.Model):
 	año = models.DateTimeField('fecha')
 	entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE,blank=True)
 	descripcion = models.CharField(max_length=300,null=True)
+	imagenes = models.FileField(upload_to = 'proyecto/')
 	video = models.FileField(upload_to='proyecto/', null=True, verbose_name="video")
+	proyectoAnual = models.ForeignKey(Proyecto_del_año, on_delete=models.CASCADE,blank=True)
 	history = HistoricalRecords()
 
 	
@@ -71,6 +90,7 @@ class Proyecto(models.Model):
 
 	def __str__(self):
 		return str(self.nombreProyecto)
+		
 
 class Imagen_Proyecto(models.Model):
 	tituloProyecto = models.CharField(max_length=400,blank=True,null=True)	
@@ -84,24 +104,6 @@ class Imagen_Proyecto(models.Model):
 	def __str__(self):
 		return str(self.tituloProyecto)
 
-
-class Proyecto_del_año(models.Model):
-	order = models.IntegerField(blank=True, null=True)
-	titulo = models.CharField(max_length=40,null=True)
-	año = models.DateTimeField('fecha')
-	descripcion = models.CharField(max_length=300,null=True)
-	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE,blank=True)
-	proyecto_del_año =models.BooleanField(default=True,verbose_name='proyecto_del_año')
-	
-
-	
-	class Meta:
-		verbose_name = 'Proyecto_del_año'
-		verbose_name_plural = 'Proyectos_del_año'
-		ordering = ['order']
-
-	def __str__(self):
-		return str(self.titulo)
 
 
 class Noticia(models.Model):

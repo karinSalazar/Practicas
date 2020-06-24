@@ -39,6 +39,7 @@ class RecursoAdmin(admin.ModelAdmin):
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ("order", "fecha", "titulo")
+    search_fields = ['titulo']
 
 
     def order_count(self, obj):
@@ -80,6 +81,8 @@ class PollHistoryAdmin(SimpleHistoryAdmin):
 
 class PostImageAdmin(admin.StackedInline):
     model = Imagen_Proyecto
+    list_display = ["id", "nombreProyecto", "año"]
+    search_fields = ['nombreProyecto']
 
 @admin.register(Proyecto)
 class PostAdmin(admin.ModelAdmin):
