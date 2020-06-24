@@ -53,14 +53,14 @@ class Entidad(models.Model):
 
 
 
+
 class Proyecto(models.Model):
 	order = models.IntegerField(blank=True, null=True)
 	nombreProyecto = models.CharField(max_length=40,null=True)
 	año = models.DateTimeField('fecha')
 	entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE,blank=True)
 	descripcion = models.CharField(max_length=300,null=True)
-	video = models.FileField(upload_to='proyecto/', null=True, verbose_name="")
-	proyecto_del_año =models.BooleanField(default=True,verbose_name='proyecto_del_año')
+	video = models.FileField(upload_to='proyecto/', null=True, verbose_name="video")
 	history = HistoricalRecords()
 
 	
@@ -72,7 +72,36 @@ class Proyecto(models.Model):
 	def __str__(self):
 		return str(self.nombreProyecto)
 
+class Imagen_Proyecto(models.Model):
+	tituloProyecto = models.CharField(max_length=400,blank=True,null=True)	
+	images = models.FileField(upload_to = 'images/')
+	imagenes = models.ForeignKey(Proyecto, on_delete=models.CASCADE, null=True)
 
+	class Meta:
+		verbose_name = 'Imagen_Proyecto'
+		verbose_name_plural = 'Imagenes_Proyectos'
+
+	def __str__(self):
+		return str(self.tituloProyecto)
+
+
+class Proyecto_del_año(models.Model):
+	order = models.IntegerField(blank=True, null=True)
+	titulo = models.CharField(max_length=40,null=True)
+	año = models.DateTimeField('fecha')
+	descripcion = models.CharField(max_length=300,null=True)
+	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE,blank=True)
+	proyecto_del_año =models.BooleanField(default=True,verbose_name='proyecto_del_año')
+	
+
+	
+	class Meta:
+		verbose_name = 'Proyecto_del_año'
+		verbose_name_plural = 'Proyectos_del_año'
+		ordering = ['order']
+
+	def __str__(self):
+		return str(self.titulo)
 
 
 class Noticia(models.Model):
@@ -128,18 +157,17 @@ class Nosotros(models.Model):
         return str(self.title)
 
 
-class Imagen(models.Model):
-	nombreVideo = models.CharField(max_length=400,blank=True,null=True)
-	video = models.FileField(upload_to='videos/', null=True, verbose_name="")
+class Imagen_Nosotros(models.Model):
+	titulo = models.CharField(max_length=400,blank=True,null=True)
 	images = models.FileField(upload_to = 'images/')
 	imagenes = models.ForeignKey(Nosotros, on_delete=models.CASCADE, null=True)
 
 	class Meta:
-		verbose_name = 'Nosotros'
-		verbose_name_plural = 'Nosotros'
+		verbose_name = 'Imagen_Nosotros'
+		verbose_name_plural = 'Imagenes_Nosotros'
 
 	def __str__(self):
-		return str(self.nombreVideo)
+		return str(self.titulo)
 
 
 

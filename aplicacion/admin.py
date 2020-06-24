@@ -9,7 +9,7 @@ from django.utils.html import format_html
 admin.site.register(Video)
 admin.site.register(Colaborador)
 admin.site.register(Entidad)
-
+admin.site.register(Proyecto_del_año)
 
 
 
@@ -31,16 +31,6 @@ class RecursoAdmin(admin.ModelAdmin):
 
 
 
-
-
-@admin.register(Proyecto)
-class PollHistoryAdmin(SimpleHistoryAdmin):
-    list_display = ["id", "nombreProyecto", "año", "proyecto_del_año"]
-    #history_list_display = ["proyecto_del_año"]
-    history_list_display = ["status"]
-    search_fields = ['nombreProyecto']
-    
-#admin.site.register(Proyecto, PollHistoryAdmin)
 
 
 
@@ -76,11 +66,40 @@ class NoticiaAdmin(admin.ModelAdmin):
 
 
 
+"""@admin.register(Proyecto)
+class PollHistoryAdmin(SimpleHistoryAdmin):
+    list_display = ["id", "nombreProyecto", "año", "proyecto_del_año"]
+    #history_list_display = ["proyecto_del_año"]
+    history_list_display = ["status"]
+    search_fields = ['nombreProyecto']"""
+    
+#admin.site.register(Proyecto, PollHistoryAdmin)
+
+
+
+
+class PostImageAdmin(admin.StackedInline):
+    model = Imagen_Proyecto
+
+@admin.register(Proyecto)
+class PostAdmin(admin.ModelAdmin):
+    inlines = [PostImageAdmin]
+
+    class Meta:
+       model = Proyecto
+
+@admin.register(Imagen_Proyecto)
+class PostImageAdmin(admin.ModelAdmin):
+    pass
+
+
+
+
 
     
 
-"""class PostImageAdmin(admin.StackedInline):
-    model = Imagen
+class PostImageAdmin(admin.StackedInline):
+    model = Imagen_Nosotros
 
 @admin.register(Nosotros)
 class PostAdmin(admin.ModelAdmin):
@@ -89,6 +108,7 @@ class PostAdmin(admin.ModelAdmin):
     class Meta:
        model = Nosotros
 
-@admin.register(Imagen)
+@admin.register(Imagen_Nosotros)
 class PostImageAdmin(admin.ModelAdmin):
-    pass"""
+    pass
+
