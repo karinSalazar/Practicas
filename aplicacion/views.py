@@ -9,7 +9,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from random import shuffle
 
-
+from .forms import VideoForm
 from django.db.models import Q
 
 
@@ -34,9 +34,19 @@ class Inicio(SuccessMessageMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super(Inicio, self).get_context_data(**kwargs)
         context['nos'] = Nosotros.objects.all()
-        context['proyectos'] = Proyecto.objects.all()
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         context['prensa'] = Noticia.objects.all()
+
+        listaVideos=Video.objects.all()
+        if (len(listaVideos)>0): #Si hay videos
+            lastvideo= Video.objects.all()[0]
+            context['videofile']= lastvideo.videofile
+
+        
         return context
+
+
 
 
 
@@ -54,18 +64,91 @@ class AboutUs(TemplateView):
 
 
     
+class ProgramaAnual(ListView):
+    model = ProyectoAnual
+    template_name = 'aplicacion/proyectoAnual.html'
+    context_object_name = 'anual'
+    queryset = ProyectoAnual.objects.all()
+
+                
+    def get_context_data(self, **kwargs):
+        context=super(ProyectoAnual, self).get_context_data(**kwargs)
+        parametro = self.kwargs.get('id', None)
+        context['proyectos']=Proyecto.objects.all()
+        context['anualId']=ProyectoAnual.objects.filter(id=parametro)
+        return context
+
 class Programa(ListView):
     model = Proyecto
     template_name = 'aplicacion/proyecto.html'
-    context_object_name = 'proyectos'
+    context_object_name = 'project'
     queryset = Proyecto.objects.all()
 
                 
     def get_context_data(self, **kwargs):
-        context=super(Programa, self).get_context_data(**kwargs)
+        context=super(Proyecto, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
-        context['programaId']=Proyecto.objects.filter(id=parametro)
+        #context['proyectos']=Proyecto.objects.all()
+        context['pro']=Proyecto.objects.filter(id=parametro)
         return context
+
+
+
+"""class Edicion(ListView):
+    model = Promocion
+    template_name = 'tomillo/promocion.html'
+    context_object_name = 'promociones'
+    queryset = Promocion.objects.all()
+
+                
+    def get_context_data(self, **kwargs):
+        context=super(Edicion, self).get_context_data(**kwargs)
+        parametro = self.kwargs.get('id', None)
+        context['programas']=Programa.objects.all() 
+        context['promociones']=Promocion.objects.all()
+        context['edicion']=Promocion.objects.filter(id=parametro)
+        return context
+        
+
+class Formacion(ListView):
+    model = Programa
+    template_name = 'tomillo/programa.html'
+    context_object_name = 'programas'
+    queryset = Programa.objects.all()
+
+                
+    def get_context_data(self, **kwargs):
+        context=super(Formacion, self).get_context_data(**kwargs)
+        parametro = self.kwargs.get('id', None)
+        context['promociones']=Promocion.objects.all() 
+        context['formacionId']=Programa.objects.filter(id=parametro)
+        return context
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class Resources(ListView):

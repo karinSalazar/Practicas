@@ -9,14 +9,13 @@ from django.utils.html import format_html
 admin.site.register(Video)
 admin.site.register(Colaborador)
 admin.site.register(Entidad)
-admin.site.register(Proyecto_del_año)
 
 
 
 
 @admin.register(Recurso)
 class RecursoAdmin(admin.ModelAdmin):
-    list_display = ("id", "nombreRecurso", "custom_github_profile_url", "status")
+    list_display = ( "nombreRecurso", "custom_github_profile_url", "status")
     search_fields = ['nombreRecurso']
 
 
@@ -38,7 +37,7 @@ class RecursoAdmin(admin.ModelAdmin):
 
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ("order", "fecha", "titulo")
+    list_display = ("created", "fecha", "titulo")
     search_fields = ['titulo']
 
 
@@ -65,22 +64,41 @@ class NoticiaAdmin(admin.ModelAdmin):
 
 
 
+@admin.register(Proyecto)
+class ProyectoAdmin(admin.ModelAdmin):
+    model = Proyecto
+    list_display = ("nombreProyecto", "año", "prueba2", "prueba",)
+    #search_fields = ['nombreProyecto']
+    list_filter = [ 'proyectoAnual', 'entidades']
+    history_list_display = ["nombreProyecto"]
+
+    def prueba(self, obj):
+        return obj.proyectoAnual.titulo
+    prueba.admin_order_field  = 'proyectoAnual'  
+    prueba.short_description = 'Proyecto Anual' 
 
 
-"""@admin.register(Proyecto)
-class PollHistoryAdmin(SimpleHistoryAdmin):
-    list_display = ["id", "nombreProyecto", "año", "proyecto_del_año"]
-    #history_list_display = ["proyecto_del_año"]
-    history_list_display = ["status"]
-    search_fields = ['nombreProyecto']"""
-    
-#admin.site.register(Proyecto, PollHistoryAdmin)
+    def prueba2(self, obje):
+        return obje.entidades
+    prueba2.admin_order_field  = 'entidades'  
+    prueba2.short_description = 'Entidades Vinculadas' 
 
 
 
 
-class PostImageAdmin(admin.StackedInline):
-    model = Imagen_Proyecto
+
+@admin.register(ProyectoAnual)
+class ProyectoAnualAdmin(admin.ModelAdmin):
+    model = ProyectoAnual
+    list_display = ("titulo", "año", "status",)
+    list_filter = [ 'status']
+    history_list_display = ["titulo"]
+
+   
+
+
+"""class PostImageAdmin(admin.StackedInline):
+    model = Proyecto
     list_display = ["id", "nombreProyecto", "año"]
     search_fields = ['nombreProyecto']
 
@@ -94,7 +112,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Imagen_Proyecto)
 class PostImageAdmin(admin.ModelAdmin):
     pass
-
+"""
 
 
 
