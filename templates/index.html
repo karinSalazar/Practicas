@@ -89,12 +89,35 @@
   <section id="hero" class="d-flex align-items-center justify-content-center">
     <div class="container" data-aos="fade-up">
 
-      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+      <!--<div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
           <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
           <h2>We are team of talanted digital marketers</h2>
         </div>
-      </div>
+      </div>-->
+
+      {% if videofile %}
+<section class="view intro-video">
+    <div class="wow fadeIn">
+        <video class="video-fluid z-depth-300 " autoplay loop controls muted>
+            <source class="embed-responsive-item" src=' {{ MEDIA_URL }}{{ videofile }} ' type='video/mp4 ' 
+                allowfullscreen="" frameborder="5000|7000" />
+        </video>
+
+    </div>
+
+    <script>
+        'undefined ' === typeof _trfq || (window._trfq = []);
+        'undefined ' === typeof _trfd && (window._trfd = []), _trfd.push({
+            'tccl.baseHost ': 'secureserver.net '
+        }), _trfd.push({
+            'ap ': 'cpsh '
+        }, {
+            'server ': 'p3plcpnl0769 '
+        })
+    </script>
+</section>
+{% endif %}
 
       <div class="row mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
               
@@ -112,105 +135,40 @@
         <div class="zerogrid-fluid">
           <div class="wrap-box">
             <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
-              
+              {% for pro in anual %} 
+              {% if pro.status == True %}
             <div class="section-title text-center">
-              <p>Proyectos del Año 2020</p>
+              <p>Proyectos del Año 2020 {{pro.titulo}}</p>
               <h2></h2>              
             </div>
             <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
               <div class="row">
+                 {% for promo in project %}   
+                    {% if pro.id == promo.proyectoAnual.id %}  
                 <div class="lg-1-5 md-1-3 sm-1-2">
                   <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/1.jpg' %}" class="img-responsive" alt="">
+                    <img src="../../static/img/{{promo.imagen}}" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                       <div class="portfolio-box-caption-content">
                         <div class="project-name">
-                          Project Name
+                          {{promo.nombreProyecto}}
                         </div>
                         <div class="project-category">
-                          Category
+                          {{promo.entidades.nombreEntidad}}
                         </div>
                         <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
+                          <a href="" class="button button-skin">Read More</a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="lg-1-5 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/2.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-5 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/3.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-5 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/4.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                                
-                <div class="lg-1-5 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/8.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                   {% endif %} 
+                {% endfor %} 
+      
               </div>
+              {% endif %} 
+              {% endfor %} 
             </div>
           </div>
         </div>

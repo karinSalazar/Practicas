@@ -1,6 +1,9 @@
 from django import forms
 from django.forms import TextInput, EmailInput
 
+from .models import Video
+
+
 
 
 class ContactoForm(forms.Form):
@@ -11,3 +14,7 @@ class ContactoForm(forms.Form):
 
 
 
+class VideoForm(forms.ModelForm):
+    class Meta:
+        model= Video
+        fields= ["name", "videofile"]
