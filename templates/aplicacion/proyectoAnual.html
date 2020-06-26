@@ -1,0 +1,92 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Nuestros Proyectos</h2>
+          <ol>
+            <li>Pensando siempre en la empleabilidad....</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+
+<div id="page-content">
+        <div class="box-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <!-----------------Content-------------------->
+                        <article>
+                            <div class="wrap-post"><!--Start Box-->
+                                {% for k in formacionId %}
+                                <div class="entry-header">
+                                    <h1 class="entry-title text-center text-uppercase">{{k.nombrePrograma}}</a></h2>
+                                </div>
+                                <div class="post-thumbnail-wrap">
+                                    <div class="portfolio-box zoom-effect">
+                                        <img src="{{k.imagen.url}}" class="img-responsive text-center" alt="">
+                                    </div>
+                                </div>
+                                <div class="entry-content">
+                                    <p class="text-justify">{{k.descripcion}}</p>
+                                    <dl>
+                                        <dt>Content:</dt>
+                                        {% autoescape off%}
+                                        <dd>{{k.contenido}} </dd>
+                                        {% endautoescape %}<br/>
+                                        <dt>Requirements:</dt>
+                                        {% autoescape off%}
+                                        <dd>{{k.requisitos}}</dd>
+                                        {% endautoescape %}<br/>
+                                        <dt>Starting Date:</dt>
+                                        {% autoescape off%}
+                                        <dd>{{k.inicio}}</dd>
+                                        {% endautoescape %}<br/>
+                                        <dt>Hours:</dt>
+                                        {% autoescape off%}
+                                        <dd>{{k.horas}}</dd>
+                                        {% endautoescape %}<br/>
+                                        <dt>Place:</dt>
+                                        {% autoescape off%}
+                                        <dd>{{k.lugar}}</dd>
+                                        {% endautoescape %}<br/>
+                                        <dt>Sponsors:</dt>
+                                        {% autoescape off%}
+                                        <dd>{{k.patrocinador}}</dd>
+                                        {% endautoescape %}<br/>
+                                    </dl> 
+                                    <br/>
+                                </div>
+                                <div class="row">
+                                    {% for p in k.logo.all %}<br>
+                                    <div class="col-md-6 text-center">
+                                        <div class="product"><br>                                            
+                                                <img src="{{p.logo.url}}" class="img-responsive" alt="#">                                            
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="btn btn-skin btn-block" href="{% url 'tomillo:contact' %}">Register</a>
+
+                            {% endfor %}
+                        </div>
+                    </article>
+                </div>               
+            </div>
+            </div>
+        </div>
+    </div>
+
+   
+{% endblock content %}

@@ -72,7 +72,7 @@ class ProgramaAnual(ListView):
 
                 
     def get_context_data(self, **kwargs):
-        context=super(ProyectoAnual, self).get_context_data(**kwargs)
+        context=super(ProgramaAnual, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
         context['proyectos']=Proyecto.objects.all()
         context['anualId']=ProyectoAnual.objects.filter(id=parametro)
@@ -86,7 +86,7 @@ class Programa(ListView):
 
                 
     def get_context_data(self, **kwargs):
-        context=super(Proyecto, self).get_context_data(**kwargs)
+        context=super(Programa, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
         #context['proyectos']=Proyecto.objects.all()
         context['pro']=Proyecto.objects.filter(id=parametro)

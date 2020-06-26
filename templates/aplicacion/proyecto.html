@@ -215,6 +215,53 @@
 
       </div>
     </section><!-- End Portfolio Section -->
+
+     {% for pro in edicion %}
+                                <div class="entry-header">
+                                    <h1 class="entry-title text-center text-uppercase">{{pro.nombrePromo}}</a></h2>
+                                      <span class="entry-meta">
+                        <ul class="list-inline text-center">
+                          <li>{{pro.inicio}} - {{pro.fin}}</li>
+                        </ul>
+                    </span>
+                                </div>
+                                <div class="post-thumbnail-wrap">
+                                    <div class="portfolio-box zoom-effect">
+                                        <img src="{{pro.imagen.url}}" class="img-responsive" alt="Nature" style="width:100%">
+                                    </div>
+                                </div>
+                                <div class="entry-content text-center">
+                  <h2 class="entry-title recursos text-center">{{pro.programa}}</h2>
+                  <h3 class="entry-title text-center">{{pro.duracion}} horas </h3>
+                  
+                </div>
+
+                {% for p in pro.foto.all %}
+                <div class="col-sm-3 col-md-6 text-center animate-box"><!--Start Box1--> 
+                  <div class="classWithM"> 
+                      <div class="post-thumbnail-wrap">
+                        <div class="portfolio-box zoom-effect">
+                          <img src="{{p.imagen.url}}" class= "lua img-rounded" > 
+                        </div>                        
+                      </div>
+                  </div>
+                </div>
+                {% endfor %}
+
+                {% endfor %}
+                  </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  
+
+
+
        
   <script>
 		function Barrita() {

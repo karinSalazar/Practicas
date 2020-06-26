@@ -62,13 +62,22 @@
           <li class="active"><a href="{% url 'inicio' %}">Home</a></li>
           <li id="nos"><a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
 
-          <li id="pro"class="drop-down"><a href="#">Proyectos</a>
+          <li class="drop-down"><a href="">Proyectos</a>
             <ul>
-              {% for prog in proyectos %}
-              <li><a href="{% url 'aplicacion:proyecto' prog.id %}">{{prog.nombreProyecto}}</a></li>
-              {% endfor %}             
+              {% for pro in anual %} 
+                  <li class="drop-down"><a href="{% url 'aplicacion:proyectoAnual' pro.id %}">{{pro.titulo}}</a>
+                    <ul>
+                      {% for promo in project %}   
+                        {% if pro.id == promo.proyectoAnual.id %}  
+                          <li><a href="{% url 'aplicacion:proyecto' promo.id %}">{{promo.nombreProyecto}}</a></li>
+                        {% endif %} 
+                      {% endfor %}
+                    </ul>
+                  </li>
+              {% endfor %}
             </ul>
           </li>
+
           <li id="rec"><a href="{% url 'aplicacion:recurso'  %}">Recursos</a></li>
           <li id="col"><a href="{% url 'aplicacion:colaborador'  %}">Colaboradores</a></li>  
           <li id="not"><a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>       
@@ -138,7 +147,7 @@
               {% for pro in anual %} 
               {% if pro.status == True %}
             <div class="section-title text-center">
-              <p>Proyectos del Año 2020 {{pro.titulo}}</p>
+              <p> {{pro.titulo}} </p>
               <h2></h2>              
             </div>
             <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
@@ -146,7 +155,7 @@
                  {% for promo in project %}   
                     {% if pro.id == promo.proyectoAnual.id %}  
                 <div class="lg-1-5 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
+                  <div class="portfolio-box zoom-effect objetindex">
                     <img src="../../static/img/{{promo.imagen}}" class="img-responsive" alt="">
                     <div class="portfolio-box-caption">
                       <div class="portfolio-box-caption-content">

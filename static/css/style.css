@@ -1605,6 +1605,8 @@ section {
 .pressname {height: 80px; overflow: hidden;}
 .presstext {height: 180px; overflow: hidden;}
 
+.objetindex  img{width: 300px; height: 200px; object-fit: none;}
+
 
 
 

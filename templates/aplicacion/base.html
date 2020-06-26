@@ -60,13 +60,23 @@
         <ul>
           <li><a href="{% url 'inicio' %}">Home</a></li>
           <li id="nos"><a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
-          <li id="pro"class="drop-down"><a href="">Proyectos</a>
+          
+          <li class="drop-down"><a href="">Proyectos</a>
             <ul>
-              {% for prog in proyectos %}
-              <li><a href="{% url 'aplicacion:proyecto' prog.id %}">{{prog.nombreProyecto}}</a></li>
-              {% endfor %}             
+              {% for pro in anual %} 
+                  <li class="drop-down"><a href="{% url 'aplicacion:proyectoAnual' pro.id %}">{{pro.titulo}}</a>
+                    <ul>
+                      {% for promo in project %}   
+                        {% if pro.id == promo.proyectoAnual.id %}  
+                          <li><a href="{% url 'aplicacion:proyecto' promo.id %}">{{promo.nombreProyecto}}</a></li>
+                        {% endif %} 
+                      {% endfor %}
+                    </ul>
+                  </li>
+              {% endfor %}
             </ul>
           </li>
+          
           <li id="rec"><a href="{% url 'aplicacion:recurso'  %}">Recursos</a></li>
           <li id="col"><a href="{% url 'aplicacion:colaborador'  %}">Colaboradores</a></li>  
           <li id="not"><a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>       
