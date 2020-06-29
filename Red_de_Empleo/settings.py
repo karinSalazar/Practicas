@@ -161,3 +161,26 @@ MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+
+MATERIAL_ADMIN_SITE = {
+    'HEADER':  ('Red Joven'),  # Admin site header
+    'TITLE':  ('Red Joven de Empleo'),  # Admin site title
+    'FAVICON':  'img/logo_red.jpg',  # Admin site favicon (path to static should be specified)
+    'MAIN_BG_COLOR':  'black',  # Admin site main color, css color should be specified
+    'MAIN_HOVER_COLOR':  'green',  # Admin site main hover color, css color should be specified
+    'PROFILE_PICTURE':  'img/admin.jpg',  # Admin site profile picture (path to static should be specified)
+    'PROFILE_BG':  'img/bg-3.jpg',  # Admin site profile background (path to static should be specified)
+    'LOGIN_LOGO':  'img/login.png',  # Admin site logo on login page (path to static should be specified)
+    'LOGOUT_BG':  'img/logo_red.jpg',  # Admin site background on login/logout pages (path to static should be specified)
+    'SHOW_THEMES':  True,  #  Show default admin themes button
+    'TRAY_REVERSE': True,  # Hide object-tools and additional-submit-line by default
+    'NAVBAR_REVERSE': True,  # Hide side navbar by default
+    'SHOW_COUNTS': True, # Show instances counts for each model
+    'APP_ICONS': {  # Set icons for applications(lowercase), including 3rd party apps, {'application_name': 'material_icon_name', ...}
+        'sites': 'send',
+    },
+    'MODEL_ICONS': {  # Set icons for models(lowercase), including 3rd party models, {'model_name': 'material_icon_name', ...}
+        'site': 'contact_mail',
+    }
+}
