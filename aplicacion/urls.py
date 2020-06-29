@@ -21,7 +21,7 @@ urlpatterns = [
  
   ]
 
-
     
-
-  
+admin.site.site_header = "Red Joven y Empleo"
+admin.site.site_title = "Admin Red Joven y Empleo"
+admin.site.index_title = "Bienvenido al Portal de la Red Joven y Empleo"

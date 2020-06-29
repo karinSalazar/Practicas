@@ -15,20 +15,23 @@ admin.site.register(Entidad)
 
 @admin.register(Recurso)
 class RecursoAdmin(admin.ModelAdmin):
-    list_display = ( "nombreRecurso", "custom_github_profile_url", "status")
+    list_display = ( "nombreRecurso", "descarga", "status")
     search_fields = ['nombreRecurso']
+    #readonly_fields = ('archivo', )
+    list_per_page = 250#paginar
 
 
-    def custom_github_profile_url(self, obj):
-        return format_html(
-        '<a  href="{0}" class="button">Archivo</a>&nbsp;',
-        obj.archivo
-        )
+    def descarga(self, obj):
+        if obj.archivo:
+            return format_html("<a class ='button button-skin text-center' href= '%s' download>Download</a>" % (obj.archivo.url,))
+        else:
+            return "No attachment"
 
-    custom_github_profile_url.short_description = 'Ver Archivo'
-    custom_github_profile_url.allow_tags = True
+    descarga.short_description = 'Ver Archivo'
+    descarga.allow_tags = True
 
 
+#'%s'
 
 
 
@@ -93,7 +96,7 @@ class ProyectoAnualAdmin(admin.ModelAdmin):
     list_display = ("titulo", "año", "status",)
     list_filter = [ 'status']
     history_list_display = ["titulo"]
-
+   
    
 
 

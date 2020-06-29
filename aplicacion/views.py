@@ -58,95 +58,38 @@ class AboutUs(TemplateView):
 
    
     def get_context_data(self, **kwargs):
-        context = super(Nosotros, self).get_context_data(**kwargs)
-        context['proyectos'] = Proyecto.objects.all()
+        context = super(AboutUs, self).get_context_data(**kwargs)
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
+
 
 
     
 class ProgramaAnual(ListView):
     model = ProyectoAnual
     template_name = 'aplicacion/proyectoAnual.html'
-    context_object_name = 'anual'
-    queryset = ProyectoAnual.objects.all()
-
-                
+                    
     def get_context_data(self, **kwargs):
         context=super(ProgramaAnual, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
         context['proyectos']=Proyecto.objects.all()
         context['anualId']=ProyectoAnual.objects.filter(id=parametro)
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
 
 class Programa(ListView):
     model = Proyecto
     template_name = 'aplicacion/proyecto.html'
-    context_object_name = 'project'
-    queryset = Proyecto.objects.all()
-
-                
+                    
     def get_context_data(self, **kwargs):
         context=super(Programa, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
-        #context['proyectos']=Proyecto.objects.all()
         context['pro']=Proyecto.objects.filter(id=parametro)
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
-
-
-
-"""class Edicion(ListView):
-    model = Promocion
-    template_name = 'tomillo/promocion.html'
-    context_object_name = 'promociones'
-    queryset = Promocion.objects.all()
-
-                
-    def get_context_data(self, **kwargs):
-        context=super(Edicion, self).get_context_data(**kwargs)
-        parametro = self.kwargs.get('id', None)
-        context['programas']=Programa.objects.all() 
-        context['promociones']=Promocion.objects.all()
-        context['edicion']=Promocion.objects.filter(id=parametro)
-        return context
-        
-
-class Formacion(ListView):
-    model = Programa
-    template_name = 'tomillo/programa.html'
-    context_object_name = 'programas'
-    queryset = Programa.objects.all()
-
-                
-    def get_context_data(self, **kwargs):
-        context=super(Formacion, self).get_context_data(**kwargs)
-        parametro = self.kwargs.get('id', None)
-        context['promociones']=Promocion.objects.all() 
-        context['formacionId']=Programa.objects.filter(id=parametro)
-        return context
-
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -183,8 +126,10 @@ class Resources(ListView):
             """
     def get_context_data(self, **kwargs):
         context = super(Resources, self).get_context_data(**kwargs)
-        context['proyectos'] = Proyecto.objects.all()
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
+
 
     
 
@@ -194,10 +139,11 @@ class Partners(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Partners, self).get_context_data(**kwargs)
-        context['proyectos'] = Proyecto.objects.all()
         lista = list(Colaborador.objects.all())
         shuffle(lista)
         context['colaboradores'] = lista
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
 
 
@@ -211,7 +157,8 @@ class Prensa(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Prensa, self).get_context_data(**kwargs)
-        context['proyectos'] = Proyecto.objects.all()
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
 
     
@@ -233,8 +180,10 @@ class Contacto(SuccessMessageMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(Contacto, self).get_context_data(**kwargs)
-        context['proyectos'] = Proyecto.objects.all()
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
         return context
+       
 
 
 

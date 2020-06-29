@@ -31,3 +31,5 @@ urlpatterns = [
     path('aplicacion/', include(('aplicacion.urls', 'aplicacion'))),
     path('', Inicio.as_view(), name = 'inicio'),
 ]
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
