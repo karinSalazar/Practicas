@@ -10,258 +10,78 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Nuestros Proyectos</h2>
-          <ol>
-            <li>Pensando siempre en la empleabilidad....</li>
-          </ol>
+          
         </div>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- ======= Portfolio Details Section ======= -->
-   <div id="page-content">
-        <div class="box-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <!-----------------Content-------------------->
-                        <article>
-                            <div class="wrap-post"><!--Start Box-->
-                                {% for k in programaId %}
-                                <div class="entry-header">
-                                    <h1 class="entry-title text-center text-uppercase">{{k.nombreProyecto}}</a></h2>
-                                </div>
-                                <div class="post-thumbnail-wrap">
-                                    <div class="portfolio-box zoom-effect">
-                                        <img src="../../static/img/{{k.imagen.url}}" class="img-responsive text-center" alt="">
-                                    </div>
-                                </div>
-                                <div class="entry-content">
-                                    <p class="text-justify">{{k.descripcion}}</p>
-                                    <br/>
-                                </div>
-                                <div class="row">
-                                    <br>
-                                    <div class="col-md-6 text-center">
-                                        <div class="product"><br>                                            
-                                                
-                                                <img src="../../static/img/{{k.imagen.url}}" class="img-responsive" alt="#">
-																                                             
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <a class="btn btn-skin btn-block" href="{% url 'aplicacion:contacto' %}">Register</a>
-
-                            {% endfor %}
-                        </div>
-                    </article>
-                </div>               
-            </div>
-            </div>
-        </div>
-    </div>
-
-        <!-- ======= Portfolio Section ======= -->
+           <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
-
+       
+          {% for p in pro %}
         <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Check our Portfolio</p>
+          <h2>Nuestro Proyecto</h2>
+          <p>{{p.nombreProyecto}}</p>
         </div>
+          
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
               <li data-filter=".filter-web">Web</li>
             </ul>
           </div>
         </div>
-
+        
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
+                     
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
+              <img src="{{p.imagen.url}}" class="img-fluid" alt="">            
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
+                <h4>{{p.entidades}}</h4>
+                <p>{{p.nombreProyecto}}</p>             
                 <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-1.jpg' %}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
+                  <a href="{{p.imagen.url}}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                </div>                
+              </div>              
             </div>
           </div>
 
+          {% for q in ima %}
+          {% if p.id == q.imagenes.id %}  
+           
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
+              <img src="{{q.images.url}}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
+                
+                <h4>{{p.entidades}}</h4>
+                <p>{{p.nombreProyecto}}</p>
+                
                 <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-2.jpg' %}" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="{{q.images.url}}" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-3.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-3.jpg' %}" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-4.jpg' %}" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-5.jpg' %}" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-6.jpg' %}" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-7.jpg' %}" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-8.jpg' %}" data-gall="portfolioGallery" class="venobox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{% static 'img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="{% static 'img/portfolio/portfolio-9.jpg' %}" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          
+          {% endif %} 
+          {% endfor %}
+     
+         
         </div>
-
+          {% endfor %}
       </div>
     </section><!-- End Portfolio Section -->
 
-     {% for pro in edicion %}
-                                <div class="entry-header">
-                                    <h1 class="entry-title text-center text-uppercase">{{pro.nombrePromo}}</a></h2>
-                                      <span class="entry-meta">
-                        <ul class="list-inline text-center">
-                          <li>{{pro.inicio}} - {{pro.fin}}</li>
-                        </ul>
-                    </span>
-                                </div>
-                                <div class="post-thumbnail-wrap">
-                                    <div class="portfolio-box zoom-effect">
-                                        <img src="{{pro.imagen.url}}" class="img-responsive" alt="Nature" style="width:100%">
-                                    </div>
-                                </div>
-                                <div class="entry-content text-center">
-                  <h2 class="entry-title recursos text-center">{{pro.programa}}</h2>
-                  <h3 class="entry-title text-center">{{pro.duracion}} horas </h3>
-                  
-                </div>
-
-                {% for p in pro.foto.all %}
-                <div class="col-sm-3 col-md-6 text-center animate-box"><!--Start Box1--> 
-                  <div class="classWithM"> 
-                      <div class="post-thumbnail-wrap">
-                        <div class="portfolio-box zoom-effect">
-                          <img src="{{p.imagen.url}}" class= "lua img-rounded" > 
-                        </div>                        
-                      </div>
-                  </div>
-                </div>
-                {% endfor %}
-
-                {% endfor %}
-                  </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-
-  
-
-
-
+   
+   
+</main>
        
   <script>
 		function Barrita() {

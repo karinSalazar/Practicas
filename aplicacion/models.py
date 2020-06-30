@@ -78,14 +78,20 @@ class Entidad(models.Model):
 
 
 
+
+
+
+
 class Proyecto(models.Model):
 	nombreProyecto = models.CharField(max_length=40,null=True,verbose_name="Nombre del Proyecto")	
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto")	
 	proyectoAnual = models.ForeignKey(ProyectoAnual, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Anual Vinculado")
 	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
-	imagen = models.ImageField(upload_to = 'proyecto/',verbose_name="Imagen")
+	imagen = models.ImageField(upload_to = 'imagesProyecto/',verbose_name="Imagen General")
 	video = models.FileField(upload_to='proyecto/', blank=True, verbose_name="Video")
 	entidades = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidades Vinculado")
+	#imagenes = models.ManyToManyField(Proyecto)
+	#imagenes = models.ForeignKey(Imagen_Proyecto, on_delete=models.CASCADE, blank=True,verbose_name="Imagenes Extras")
 	history = HistoricalRecords()
 
 	
@@ -96,17 +102,14 @@ class Proyecto(models.Model):
 
 	def __str__(self):
 		return str(self.nombreProyecto)
-		
 
 
-
-
-"""
 class Imagen_Proyecto(models.Model):
 	tituloProyecto = models.CharField(max_length=400,blank=True,null=True)	
-	images = models.FileField(upload_to = 'images/')
-	imagenes = models.ForeignKey(Proyecto, on_delete=models.CASCADE, blank=True)
-
+	images = models.FileField(upload_to = 'imagesProyecto/')
+	imagenes = models.ForeignKey(Proyecto, on_delete=models.CASCADE, blank=True,verbose_name="Imagenes Extras")
+	#imagenes = models.ManyToManyField(Proyecto)
+	
 	class Meta:
 		verbose_name = 'Imagen_Proyecto'
 		verbose_name_plural = 'Imagenes_Proyectos'
@@ -115,7 +118,7 @@ class Imagen_Proyecto(models.Model):
 		return str(self.tituloProyecto)
 
 
-"""
+
 
 
 

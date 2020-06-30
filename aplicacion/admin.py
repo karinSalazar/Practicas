@@ -1,7 +1,6 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
 from .models import *
-
 from django.utils.html import format_html
 
 
@@ -17,9 +16,7 @@ admin.site.register(Entidad)
 class RecursoAdmin(admin.ModelAdmin):
     list_display = ( "nombreRecurso", "descarga", "status")
     search_fields = ['nombreRecurso']
-    #readonly_fields = ('archivo', )
-    list_per_page = 250#paginar
-
+    list_per_page = 10 #paginar
 
     def descarga(self, obj):
         if obj.archivo:
@@ -31,8 +28,6 @@ class RecursoAdmin(admin.ModelAdmin):
     descarga.allow_tags = True
 
 
-#'%s'
-
 
 
 
@@ -42,7 +37,7 @@ class RecursoAdmin(admin.ModelAdmin):
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ("created", "fecha", "titulo")
     search_fields = ['titulo']
-
+    list_per_page = 10
 
     def order_count(self, obj):
         return obj._order_count
@@ -67,13 +62,23 @@ class NoticiaAdmin(admin.ModelAdmin):
 
 
 
+
+class ProyectoImageAdmin(admin.StackedInline):
+    model = Imagen_Proyecto
+    
+
 @admin.register(Proyecto)
 class ProyectoAdmin(admin.ModelAdmin):
     model = Proyecto
     list_display = ("nombreProyecto", "año", "prueba2", "prueba",)
-    #search_fields = ['nombreProyecto']
+    search_fields = ['nombreProyecto']
     list_filter = [ 'proyectoAnual', 'entidades']
     history_list_display = ["nombreProyecto"]
+    inlines = [ProyectoImageAdmin]
+    list_per_page = 10
+
+    class Meta:
+       model = Proyecto
 
     def prueba(self, obj):
         return obj.proyectoAnual.titulo
@@ -87,6 +92,9 @@ class ProyectoAdmin(admin.ModelAdmin):
     prueba2.short_description = 'Entidades Vinculadas' 
 
 
+@admin.register(Imagen_Proyecto)
+class ProyectoImageAdmin(admin.ModelAdmin):
+    pass
 
 
 
@@ -96,29 +104,9 @@ class ProyectoAnualAdmin(admin.ModelAdmin):
     list_display = ("titulo", "año", "status",)
     list_filter = [ 'status']
     history_list_display = ["titulo"]
+    list_per_page = 10
    
-   
-
-
-"""class PostImageAdmin(admin.StackedInline):
-    model = Proyecto
-    list_display = ["id", "nombreProyecto", "año"]
-    search_fields = ['nombreProyecto']
-
-@admin.register(Proyecto)
-class PostAdmin(admin.ModelAdmin):
-    inlines = [PostImageAdmin]
-
-    class Meta:
-       model = Proyecto
-
-@admin.register(Imagen_Proyecto)
-class PostImageAdmin(admin.ModelAdmin):
-    pass
-"""
-
-
-
+ 
 
     
 
@@ -136,3 +124,4 @@ class PostAdmin(admin.ModelAdmin):
 class PostImageAdmin(admin.ModelAdmin):
     pass
 
+ 

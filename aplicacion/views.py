@@ -79,17 +79,24 @@ class ProgramaAnual(ListView):
         context['project'] = Proyecto.objects.all()
         return context
 
+
+
 class Programa(ListView):
     model = Proyecto
     template_name = 'aplicacion/proyecto.html'
+    context_object_name = 'project'
+    queryset = Proyecto.objects.all()
                     
     def get_context_data(self, **kwargs):
         context=super(Programa, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
-        context['pro']=Proyecto.objects.filter(id=parametro)
         context['anual'] = ProyectoAnual.objects.all()
-        context['project'] = Proyecto.objects.all()
+        context['pro']=Proyecto.objects.filter(id=parametro)
+        context['ima']=Imagen_Proyecto.objects.all()
         return context
+
+
+
 
 
 
