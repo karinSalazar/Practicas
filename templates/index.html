@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'img/logo_red.jpg' %}" rel="icon">
+  <link href="{% static 'img/logo_red.jpg' %}" rel="icon" style="width:220px;"> 
   <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -94,24 +94,16 @@
 
     <!-- ======= Hero Section ======= -->
 
+  {% if videofile %}
 
   <section id="hero" class="d-flex align-items-center justify-content-center">
-    <div class="container" data-aos="fade-up">
-
-      <!--<div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
-        <div class="col-xl-6 col-lg-8">
-          <h1>Powerful Digital Solutions With Gp<span>.</span></h1>
-          <h2>We are team of talanted digital marketers</h2>
-        </div>
-      </div>-->
-
-      {% if videofile %}
-<section class="view intro-video">
-    <div class="wow fadeIn">
+    <div class="container-fluid" data-aos="fade-up">
         <video class="video-fluid z-depth-300 " autoplay loop controls muted>
             <source class="embed-responsive-item" src=' {{ MEDIA_URL }}{{ videofile }} ' type='video/mp4 ' 
-                allowfullscreen="" frameborder="5000|7000" />
+                allowfullscreen="" frameborder="5000|300000" />
         </video>
+
+       
 
     </div>
 
@@ -127,18 +119,11 @@
     </script>
 </section>
 {% endif %}
-
-      <div class="row mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-              
-        
-      </div>
-
-    </div>
-  </section><!-- End Hero -->
-
+<br><br>
+  
   <main id="main">
  
-     <!--proyecto del año-->
+<!--proyecto del año-->
       <section id="counts" class="counts">
        
         <div class="zerogrid-fluid">
@@ -156,24 +141,35 @@
                     {% if pro.id == promo.proyectoAnual.id %}  
                 <div class="lg-1-5 md-1-3 sm-1-2">
                   <div class="portfolio-box zoom-effect objetindex">
-                    <img src="../../static/img/{{promo.imagen}}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          {{promo.nombreProyecto}}
-                        </div>
-                        <div class="project-category">
-                          {{promo.entidades.nombreEntidad}}
-                        </div>
-                        <div class="project-button">
-                          <a href="" class="button button-skin">Read More</a>
-                        </div>
+                    
+                  
+                    <div class="portfolio-wrap">
+                      <img src="../../static/img/{{promo.imagen}}" class="img-fluid" alt="">
+                        <div class="portfolio-box-caption">
+                          <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                  {{promo.nombreProyecto}}
+                                </div>
+                                <div class="project-category">
+                                  {{promo.entidades.nombreEntidad}}
+                                </div>
+                                <div class="project-button">
+                                  <a href="" class="button button-skin">Read More</a>
+                                </div>
+                                <div class="portfolio-links">
+                                  <a href="../../static/img/{{promo.imagen}}" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
+                                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                </div>
+                          </div>
                       </div>
                     </div>
+                 
                   </div>
-                </div>
-                   {% endif %} 
+                  </div>
+                {% endif %} 
                 {% endfor %} 
+
+
       
               </div>
               {% endif %} 
@@ -183,7 +179,69 @@
         </div>
       </section>
 
-    <!--fin proyecto del año-->
+<!--=======fin proyecto del año=======-->
+
+<!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="image col-lg-6" style="background-image: url({% static 'img/features.jpg' %});" data-aos="fade-right"></div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-receipt"></i>
+              <h4>Durante un periodo entre 1 a 4 meses.</h4>
+              <p class="text-justify">Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-cube-alt"></i>
+              <h4>Con una edad de entre 16 años y 21 años.</h4>
+              <p class="text-justify">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-images"></i>
+              <h4>Con documentación en regla.</h4>
+              <p class="text-justify">Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-shield"></i>
+              <h4>Jóvenes en riesgo de exclusión social.</h4>
+              <p class="text-justify">Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+<!-- ======= End Features Section =======-->
+
+
+<!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="owl-carousel testimonials-carousel">
+          {% for t in testi %}
+          <div class="testimonial-item">
+            <img src="../../static/img/{{t.foto}}" class="testimonial-img" alt="">
+            <h3 class="text-capitalize">{{ t.nombre }}</h3>
+            <h4 class="text-uppercase">{{ t.proyecto }}</h4>
+            <h4 class="text-capitalize">{{ t.entidad }}</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              {{ t.texto }}.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+<!-- End Testimonials Section -->
+
+
+
 
     <!--inicio acerca de nosotros-->
              
@@ -229,45 +287,8 @@
     </section><!-- End About Section -->
     <!--fin de acerca de nosotros-->
 
-   <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="image col-lg-6" style="background-image: url({% static 'img/features.jpg' %});" data-aos="fade-right"></div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-receipt"></i>
-              <h4>Est labore ad</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Harum esse qui</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-images"></i>
-              <h4>Aut occaecati</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Features Section -->
-
-    <!--inicio 5 cajas-->
    
-  <!-- End Hero -->
-
-    <!--fin 5 cajas-->
-
+    
    
     
     <!-- ======= Cta Section ======= -->
@@ -337,72 +358,7 @@
       </div>
     </section><!-- End Counts Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="owl-carousel testimonials-carousel">
-
-          <div class="testimonial-item">
-            <img src="{% static 'img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="{% static 'img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="{% static 'img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="{% static 'img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
-            <h4>Freelancer</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-          <div class="testimonial-item">
-            <img src="{% static 'img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
+    
     
     <!--agregado frase start-->
 

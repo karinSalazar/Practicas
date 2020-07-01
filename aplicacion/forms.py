@@ -17,4 +17,4 @@ class ContactoForm(forms.Form):
 class VideoForm(forms.ModelForm):
     class Meta:
         model= Video
-        fields= ["name", "videofile"]
+        fields= ["name","videofile"]

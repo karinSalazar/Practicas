@@ -37,13 +37,12 @@ class Inicio(SuccessMessageMixin, FormView):
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         context['prensa'] = Noticia.objects.all()
-
+        context['testi'] = Testimonio.objects.all().order_by('-id')[:5]
         listaVideos=Video.objects.all()
         if (len(listaVideos)>0): #Si hay videos
             lastvideo= Video.objects.all()[0]
             context['videofile']= lastvideo.videofile
-
-        
+            
         return context
 
 
@@ -69,15 +68,28 @@ class AboutUs(TemplateView):
 class ProgramaAnual(ListView):
     model = ProyectoAnual
     template_name = 'aplicacion/proyectoAnual.html'
+    context_object_name = 'anual'
+    queryset = ProyectoAnual.objects.all()
                     
     def get_context_data(self, **kwargs):
         context=super(ProgramaAnual, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
-        context['proyectos']=Proyecto.objects.all()
         context['anualId']=ProyectoAnual.objects.filter(id=parametro)
-        context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
+        listaVideos=Video.objects.all()
+        if (len(listaVideos)>0): #Si hay videos
+            lastvideo= Video.objects.all()[0]
+            context['videofile']= lastvideo.videofile
+
         return context
+
+
+
+
+
+
+
+
 
 
 

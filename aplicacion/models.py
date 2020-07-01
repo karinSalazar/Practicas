@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from simple_history.models import HistoricalRecords
 
+
 #from django.db.models import Count
 
 
@@ -13,13 +14,14 @@ from simple_history.models import HistoricalRecords
 class Video(models.Model):
     name= models.CharField(max_length=500,verbose_name="Nombre del Video")
     videofile= models.FileField(upload_to='videos/', null=True, verbose_name="Video")
-
+    
     class Meta:
     	verbose_name = 'Video'
     	verbose_name_plural = 'Videos'
 
     def __str__(self):
     	return str(self.name) + ": " + str(self.videofile)
+
 
 
 
@@ -38,18 +40,12 @@ class Colaborador(models.Model):
 
 
 
-
-
-
-
-
 class ProyectoAnual(models.Model):
 	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
 	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
+	videofile = models.FileField(upload_to='videoProyectoAnual/', blank=True, verbose_name="Video del Proyecto")
 	status =models.BooleanField(default=True,verbose_name="activo")
-	
-
 		
 	class Meta:
 		verbose_name = 'Proyecto_Anual'
@@ -61,13 +57,10 @@ class ProyectoAnual(models.Model):
 
 
 
-
-
 class Entidad(models.Model):
 	nombreEntidad = models.CharField(max_length=40,null=True,verbose_name="Entidad")
 	link = models.URLField(max_length=500,null=True)
 	logo = models.ImageField(upload_to ='Entidades/',null=True)
-	
 	
 	class Meta:
 		verbose_name = 'Entidad'
@@ -79,21 +72,14 @@ class Entidad(models.Model):
 
 
 
-
-
-
 class Proyecto(models.Model):
 	nombreProyecto = models.CharField(max_length=40,null=True,verbose_name="Nombre del Proyecto")	
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto")	
 	proyectoAnual = models.ForeignKey(ProyectoAnual, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Anual Vinculado")
 	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
 	imagen = models.ImageField(upload_to = 'imagesProyecto/',verbose_name="Imagen General")
-	video = models.FileField(upload_to='proyecto/', blank=True, verbose_name="Video")
 	entidades = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidades Vinculado")
-	#imagenes = models.ManyToManyField(Proyecto)
-	#imagenes = models.ForeignKey(Imagen_Proyecto, on_delete=models.CASCADE, blank=True,verbose_name="Imagenes Extras")
 	history = HistoricalRecords()
-
 	
 	class Meta:
 		verbose_name = 'Proyecto'
@@ -104,42 +90,18 @@ class Proyecto(models.Model):
 		return str(self.nombreProyecto)
 
 
+
 class Imagen_Proyecto(models.Model):
 	tituloProyecto = models.CharField(max_length=400,blank=True,null=True)	
 	images = models.FileField(upload_to = 'imagesProyecto/')
 	imagenes = models.ForeignKey(Proyecto, on_delete=models.CASCADE, blank=True,verbose_name="Imagenes Extras")
-	#imagenes = models.ManyToManyField(Proyecto)
-	
+		
 	class Meta:
 		verbose_name = 'Imagen_Proyecto'
 		verbose_name_plural = 'Imagenes_Proyectos'
 
 	def __str__(self):
 		return str(self.tituloProyecto)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -154,9 +116,7 @@ class Noticia(models.Model):
 	descripcion = models.CharField(max_length=300,blank=True, null=True,verbose_name="Descripción de la Noticia")
 	imagen = models.ImageField(upload_to = 'noticia/', default = 'noticia.jpg',verbose_name="Imagen")
 	body = models.TextField(blank=True, null=True, verbose_name="Contenido de la Noticia")
-
-	       
-		
+    		
 	class Meta:
 		verbose_name = 'Noticia'
 		verbose_name_plural = 'Noticias'
@@ -175,7 +135,6 @@ class Recurso(models.Model):
 	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, null=True, verbose_name="Proyecto vinculado")
 	imagen = models.ImageField(upload_to ='recursos/', default = 'descarga.jpg')
 	status =models.BooleanField(default=True, verbose_name="Si activa esta opción será público")
-
 
 	class Meta:
 		verbose_name = 'Recurso'
@@ -212,6 +171,25 @@ class Imagen_Nosotros(models.Model):
 	def __str__(self):
 		return str(self.titulo)
 
+
+
+
+class Testimonio(models.Model):
+	nombre = models.CharField(max_length=100,verbose_name="Nombre Completo")
+	texto = models.CharField(max_length=300,verbose_name="Testimonio")
+	foto = models.ImageField(upload_to = 'fotoTestimonio/',verbose_name="Foto")
+	fecha = models.DateField(blank=True, null=True, verbose_name="Fecha")
+	entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidad Vinculada")
+	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Vinculado")
+	#home = models.BooleanField(default=False)
+	
+	class Meta:
+		verbose_name = 'Testimonio'
+		verbose_name_plural = 'Testimonios'
+
+	def __str__(self):
+
+		return str(self.nombre) + " " + str(self.fecha) + " " + str(self.entidad) + " " + str(self.proyecto)  
 
 
 

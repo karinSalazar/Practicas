@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aplicacion',
     'simple_history',
+
+    'embed_video',
 ]
 
 MIDDLEWARE = [
@@ -66,10 +68,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'Red_de_Empleo.wsgi.application'
 
@@ -135,8 +140,11 @@ STATICFILES_DIRS=[
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img') 
-MEDIA_URL = '/img/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img') 
+#MEDIA_URL = '/img/'
+
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+MEDIA_URL= "/media/"
 
 
 
