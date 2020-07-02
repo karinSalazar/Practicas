@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView, ListView, CreateView
+from django.views.generic import *
 from django.contrib.auth.models import User
 from .forms import ContactoForm
 from django.core.mail import send_mail
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from random import shuffle
-
 from .forms import VideoForm
+
 from django.db.models import Q
 
 
@@ -37,6 +37,8 @@ class Inicio(SuccessMessageMixin, FormView):
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         context['prensa'] = Noticia.objects.all()
+        context['numero'] = Impacto.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['testi'] = Testimonio.objects.all().order_by('-id')[:5]
         listaVideos=Video.objects.all()
         if (len(listaVideos)>0): #Si hay videos
@@ -85,14 +87,6 @@ class ProgramaAnual(ListView):
 
 
 
-
-
-
-
-
-
-
-
 class Programa(ListView):
     model = Proyecto
     template_name = 'aplicacion/proyecto.html'
@@ -106,9 +100,6 @@ class Programa(ListView):
         context['pro']=Proyecto.objects.filter(id=parametro)
         context['ima']=Imagen_Proyecto.objects.all()
         return context
-
-
-
 
 
 
@@ -168,7 +159,7 @@ class Partners(ListView):
 
 
 class Prensa(ListView):
-    paginate_by = 3
+    paginate_by = 4
     model = Noticia
     template_name = 'aplicacion/noticias.html'
     context_object_name = 'prensa'
@@ -178,6 +169,22 @@ class Prensa(ListView):
         context = super(Prensa, self).get_context_data(**kwargs)
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
+        context['destacados']= Noticia.objects.filter(destacados = True)[:4]
+        context['template']= 'aplicacion:noticia' 
+        return context
+
+      
+
+class InfoPrensa(DetailView):
+    template_name = 'aplicacion/infoNoticia.html'
+    model =  Noticia
+
+    def get_context_data(self, **kwargs):
+        context = super(InfoPrensa, self).get_context_data(**kwargs)
+        idnoticia = self.kwargs.get('pk',None)
+        context['info'] = Noticia.objects.get(pk = idnoticia)
+        context['template']= 'aplicacion:infonoticia'
+        context['idTemp'] = idnoticia
         return context
 
     

@@ -928,7 +928,7 @@ section {
 }
 
 .counts .image {
-  background: url("../img/counts-img.jpg") center center no-repeat;
+  background: url("../img/countsIndex.jpg") center center no-repeat;
   background-size: cover;
   min-height: 400px;
 }
@@ -1600,6 +1600,7 @@ section {
 
 .objetindex  img{width: 400px; height: 200px; object-fit: cover;}
 
+.objetnoticias  img{width: 150px; height: 100px; object-fit: fill;}
 
 .video-fluid {
     width: 100%;
@@ -1608,11 +1609,47 @@ section {
 
 #hero .container-fluid {
   /*position: relative;*/
-  padding-top: 0px;
+  padding-top: 0px;;
   padding-left: 0px;
   padding-right: 0px;
-  
 }
+
+/*falta verificar ojojito*/
+.section-title {
+  padding-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  font-family: "Poppins", sans-serif;
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: #ffde9e;
+  margin: 4px 10px;
+}
+
+.section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #151515;
+}
+
 
 
 

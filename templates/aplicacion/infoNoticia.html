@@ -1,0 +1,46 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+      </div>
+    </section><!-- End Buscar -->
+            
+    <!-- ======= Portfolio Details Section ======= -->
+    <!-- ======= Services Section ======= -->
+                <section id="services" class="services">
+                  <div class="container" data-aos="fade-up">
+
+                        <div class="section-title">
+                          <h2>Noticias</h2>
+                          <p>Últimas Noticias</p>
+                        </div>
+
+
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-lg-8 mb-100">
+                                    <!-- Blog Details Area -->
+                                    <div class="blog-details-area">
+                                        <h2 class="post-title mt-3 text-center text-uppercase">{{ info.titulo }}</h2>
+                                        <br/>
+                                        <img class="imgblog2" src="{{ info.imagen.url }}" alt="imagen"> 
+                                        <div class="post-meta">
+                                            <a href="#"><i class="icon_clock_alt"></i>{{ info.fecha }}</a>
+                                        </div>
+                                        <p class="text-justify">{{ info.body }}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </section>
+</main>
+
+{% endblock content%}

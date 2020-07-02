@@ -86,10 +86,7 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-
-      <a href="#" class="get-started-btn scrollto">Usuario</a>
-
-    </div>
+      </div>
   </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -154,11 +151,11 @@
                                   {{promo.entidades.nombreEntidad}}
                                 </div>
                                 <div class="project-button">
-                                  <a href="" class="button button-skin">Read More</a>
+                                  <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" class="button button-skin">Read More</a>
                                 </div>
                                 <div class="portfolio-links">
-                                  <a href="../../static/img/{{promo.imagen}}" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-                                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                  <a href="../../static/img/{{promo.imagen}}" data-gall="portfolioGallery" class="venobox" title="Proyecto del Año"><i class="bx bx-plus"></i></a>
+                                  <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" title="Más Detalles"><i class="bx bx-link"></i></a>
                                 </div>
                           </div>
                       </div>
@@ -181,39 +178,105 @@
 
 <!--=======fin proyecto del año=======-->
 
-<!-- ======= Features Section ======= -->
-    <section id="features" class="features">
+        
+<!-- ======= About Section ======= -->
+    <section id="about" class="about">
       <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Nosotros</h2>
+          <p>A cerca de nosotros</p>
+        </div>
 
         <div class="row">
-          <div class="image col-lg-6" style="background-image: url({% static 'img/features.jpg' %});" data-aos="fade-right"></div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-receipt"></i>
-              <h4>Durante un periodo entre 1 a 4 meses.</h4>
-              <p class="text-justify">Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Con una edad de entre 16 años y 21 años.</h4>
-              <p class="text-justify">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-images"></i>
-              <h4>Con documentación en regla.</h4>
-              <p class="text-justify">Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
-              <i class="bx bx-shield"></i>
-              <h4>Jóvenes en riesgo de exclusión social.</h4>
-              <p class="text-justify">Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</p>
-            </div>
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <h4>Experiencia Vocacional en Empresa - EVE.</h4>
+            <p class="font-italic text-justify">        
+        El proyecto EVE son las siglas de Experiencia Vocacional en Empresa. Es una experiencia formativa y de desarrollo vocacional para jóvenes en riesgo de exclusión con edades de entre 16 y 21 años, llevada a cabo en un entorno empresarial con el fin de mejorar su empleabilidad,...<a target="_blank" class="cta-btn" href="{% url 'aplicacion:nosotros'  %}">Ver Más</a>
+            </p>
+            <h5>¿Qué jóvenes participan?</h5>
+            <br/>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Jóvenes en riesgo de exclusión social.</li>
+              <li><i class="ri-check-double-line"></i> Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</li>
+              <li><i class="ri-check-double-line"></i> Con una edad de entre 16 años y 21 años.</li>
+              <li><i class="ri-check-double-line"></i> Con documentación en regla.</li>
+            </ul>
+            <br/>
+            
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->     
+
+<!--======= fin de acerca de nosotros ========-->
+
+<!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+          
+      <div class="container" data-aos="zoom-in">
+        <div class="owl-carousel clients-carousel">
+          {% for e in enti %} 
+          <img src="../../static/img/{{e.logo}}" alt="" href="{{e.link}}" target="_blank">
+          {% endfor %}
+        </div>
+      </div>      
+    </section>
+<!--======= End Clients Section =======-->
+
+
+    
+<!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3>Únete a Nosotros</h3>
+          <p> Tu colaboración nos ayuda a mejorar nuestra actuación en los programas que tienen mayores necesidades de financiación.</p>
+          <a target="_blank" class="cta-btn" href="{% url 'aplicacion:contacto'  %}">Únete</a>
+        </div>
+
+      </div>
+    </section>
+<!-- ======= End Cta Section ======= -->
+
+<!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Logros</h2>
+          <p>Impacto Social</p>
+        </div>
+
+        <div class="row no-gutters">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+            <div class="content d-flex flex-column justify-content-center">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+              </p>
+              <div class="row">
+                {% for n in numero %}
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="icofont-tick-mark"></i>
+                    <span data-toggle="counter-up">{{ n.dato }}</span>
+                    <p class="text-justify text-lowercase"><strong class="text-capitalize">{{ n.nombre }},</strong> {{ n.texto }}.</p>
+                  </div>
+                </div>
+                {% endfor %}              
+              </div>
+            </div><!-- End .content-->
           </div>
         </div>
 
       </div>
     </section>
-<!-- ======= End Features Section =======-->
+<!-- ======= End Counts Section =====-->
 
 
 <!-- ======= Testimonials Section ======= -->
@@ -238,125 +301,59 @@
 
       </div>
     </section>
-<!-- End Testimonials Section -->
+<!--======= End Testimonials Section ======== -->
 
+  <br/>
 
-
-
-    <!--inicio acerca de nosotros-->
-             
-         
-         <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+<!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <br/>
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Nosotros</h2>
-          <p>A cerca de nosotros</p>
+          <h2>Requisitos</h2>
+          <p>Nuestros Requisitos</p>
         </div>
 
         <div class="row">
-          <h4>Experiencia Vocacional en Empresa - EVE.</h4>
-            <p class="font-italic text-justify">        
-        El proyecto EVE son las siglas de Experiencia Vocacional en Empresa. Es una experiencia formativa y de desarrollo vocacional para jóvenes en riesgo de exclusión con edades de entre 16 y 21 años, llevada a cabo en un entorno empresarial con el fin de mejorar su empleabilidad, involucrando a las empresas en la formación y la integración de estos jóvenes a través de programas de Responsabilidad Social Corporativa, y tutorizada por un referente de la entidad y de la empresa. Se trata de un modelo alternativo para permitir que los jóvenes sigan formándose de manera activa y desarrollen habilidades socio-laborales a través del contacto directo con el mundo del trabajo.
-            </p>
-            <br/>
-            <br/>
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <br/>
-            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <br/>
-            <h5>¿Qué jóvenes participan?</h5>
-            <br/>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Jóvenes en riesgo de exclusión social.</li>
-              <li><i class="ri-check-double-line"></i> Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</li>
-              <li><i class="ri-check-double-line"></i> Con una edad de entre 16 años y 21 años.</li>
-              <li><i class="ri-check-double-line"></i> Con documentación en regla.</li>
-            </ul>
-            <br/>
-             <h5>¿Como es una Experiencia Vocacional en la empresa?</h5>           
-            <p class="font-italic text-justify">
-              Durante un periodo entre 1 a 4 meses y con un máximo de 25 horas semanales, los jóvenes participantes realizaran las tareas propias de un puesto de trabajo, realizando un aprendizaje creciente de la profesión (quedando excluidas las tareas repetitivas y aquellas que puedan resultar peligrosas). Las tareas que realizará el joven han de ser consensuadas entre la empresa y la entidad social. En ningún caso podrán cubrir un puesto de trabajo, ni suponer un riesgo para el joven.
-            </p>
+          <div class="image col-lg-6" style="background-image: url({% static 'img/featuresIndex.jpg' %});" data-aos="fade-right"></div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+              <i class="icofont-ui-calendar"></i>
+              <h4>Durante un periodo entre 1 a 4 meses.</h4>
+              <p class="text-justify">Con un máximo de 25 horas semanales, los jóvenes participantes realizaran las tareas propias de un puesto de trabajo.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="icofont-users-alt-2"></i>
+              <h4>Con una edad de entre 16 años y 21 años.</h4>
+              <p class="text-justify">Se trata de un modelo alternativo para permitir que los jóvenes sigan formándose de manera activa y desarrollen habilidades socio-laborales.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-images"></i>
+              <h4>Con documentación en regla.</h4>
+              <p class="text-justify">Llevada a cabo en un entorno empresarial con el fin de mejorar su empleabilidad, involucrando a las empresas en la formación.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-shield"></i>
+              <h4>Jóvenes en riesgo de exclusión social.</h4>
+              <p class="text-justify">Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional.</p>
+            </div>            
           </div>
         </div>
 
       </div>
-    </section><!-- End About Section -->
-    <!--fin de acerca de nosotros-->
+    </section>
+<!-- ======= End Features Section =======-->
 
+
+
+ 
    
     
    
-    
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>Call To Action</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn" href="#">Call To Action</a>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
 
     
 
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
-          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
-            <div class="content d-flex flex-column justify-content-center">
-              <h3>Voluptatem dignissimos provident quasi</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
-              <div class="row">
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="icofont-simple-smile"></i>
-                    <span data-toggle="counter-up">65</span>
-                    <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="icofont-document-folder"></i>
-                    <span data-toggle="counter-up">85</span>
-                    <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="icofont-clock-time"></i>
-                    <span data-toggle="counter-up">12</span>
-                    <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="icofont-award"></i>
-                    <span data-toggle="counter-up">15</span>
-                    <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End .content-->
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
+    
 
     
     
@@ -380,99 +377,7 @@
 
     <!--agregado start-->
 
-    <!-----------------content-box-4-------------------->
-      <section class="content-box box-4">
-        <div class="zerogrid-fluid">
-          <div class="wrap-box">
-            <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
-              <h2>Projects Gallery</h2>
-              <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
-            </div>
-            <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
-              <div class="row">
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/12.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/13.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/14.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/15.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <!-----------------content-box-5-------------------noticias----->
-        
-
-
-       
+         
       <section class="content-box box-5">
         <div class="zerogrid-fluid">
           <div class="wrap-box"><!--Start Box-->

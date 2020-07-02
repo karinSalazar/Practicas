@@ -6,24 +6,7 @@ from simple_history.models import HistoricalRecords
 
 #from django.db.models import Count
 
-
-
-
 # Create your models here.
-
-class Video(models.Model):
-    name= models.CharField(max_length=500,verbose_name="Nombre del Video")
-    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="Video")
-    
-    class Meta:
-    	verbose_name = 'Video'
-    	verbose_name_plural = 'Videos'
-
-    def __str__(self):
-    	return str(self.name) + ": " + str(self.videofile)
-
-
-
 
 class Colaborador(models.Model):
 	nombreColaborador = models.CharField(max_length=40,verbose_name="Colaborador")
@@ -39,24 +22,6 @@ class Colaborador(models.Model):
 
 
 
-
-class ProyectoAnual(models.Model):
-	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
-	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
-	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
-	videofile = models.FileField(upload_to='videoProyectoAnual/', blank=True, verbose_name="Video del Proyecto")
-	status =models.BooleanField(default=True,verbose_name="activo")
-		
-	class Meta:
-		verbose_name = 'Proyecto_Anual'
-		verbose_name_plural = 'Proyectos_Anuales'
-		ordering = ['año']
-
-	def __str__(self):
-		return str(self.titulo)
-
-
-
 class Entidad(models.Model):
 	nombreEntidad = models.CharField(max_length=40,null=True,verbose_name="Entidad")
 	link = models.URLField(max_length=500,null=True)
@@ -68,6 +33,23 @@ class Entidad(models.Model):
 
 	def __str__(self):
 		return str(self.nombreEntidad)
+
+
+
+class ProyectoAnual(models.Model):
+	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
+	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
+	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
+	#videofile = models.FileField(upload_to='videoProyectoAnual/', blank=True, verbose_name="Video del Proyecto")
+	status =models.BooleanField(default=True,verbose_name="activo")
+		
+	class Meta:
+		verbose_name = 'Proyecto_Anual'
+		verbose_name_plural = 'Proyectos_Anuales'
+		ordering = ['año']
+
+	def __str__(self):
+		return str(self.titulo)
 
 
 
@@ -91,6 +73,7 @@ class Proyecto(models.Model):
 
 
 
+
 class Imagen_Proyecto(models.Model):
 	tituloProyecto = models.CharField(max_length=400,blank=True,null=True)	
 	images = models.FileField(upload_to = 'imagesProyecto/')
@@ -106,6 +89,22 @@ class Imagen_Proyecto(models.Model):
 
 
 
+class Video(models.Model):
+    name= models.CharField(max_length=500,verbose_name="Nombre del Video")
+    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="Video")
+    proyectoA = models.ForeignKey(ProyectoAnual, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Anual Vinculado")
+    principal =models.BooleanField(default=True,verbose_name="Ver página principal")
+
+    class Meta:
+    	verbose_name = 'Video'
+    	verbose_name_plural = 'Videos'
+
+    def __str__(self):
+    	return str(self.name) + ": " + str(self.videofile)+ ": " + str(self.proyectoA)
+
+
+
+
 class Noticia(models.Model):	
 	created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
 	updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")
@@ -116,6 +115,7 @@ class Noticia(models.Model):
 	descripcion = models.CharField(max_length=300,blank=True, null=True,verbose_name="Descripción de la Noticia")
 	imagen = models.ImageField(upload_to = 'noticia/', default = 'noticia.jpg',verbose_name="Imagen")
 	body = models.TextField(blank=True, null=True, verbose_name="Contenido de la Noticia")
+	destacados = models.BooleanField(default=False)
     		
 	class Meta:
 		verbose_name = 'Noticia'
@@ -145,6 +145,38 @@ class Recurso(models.Model):
 
 
 
+class Testimonio(models.Model):
+	nombre = models.CharField(max_length=100,verbose_name="Nombre Completo")
+	texto = models.CharField(max_length=300,verbose_name="Testimonio")
+	foto = models.ImageField(upload_to = 'fotoTestimonio/',verbose_name="Foto")
+	fecha = models.DateField(blank=True, null=True, verbose_name="Fecha")
+	entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidad Vinculada")
+	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Vinculado")
+	
+	
+	class Meta:
+		verbose_name = 'Testimonio'
+		verbose_name_plural = 'Testimonios'
+
+	def __str__(self):
+
+		return str(self.nombre) + " " + str(self.fecha) + " " + str(self.entidad) + " " + str(self.proyecto)  
+
+
+
+class Impacto(models.Model):
+	nombre = models.CharField(max_length=40,verbose_name="Nombre Impacto Social")
+	texto = models.CharField(max_length=150,verbose_name="Descripción")
+	dato = models.IntegerField()
+
+	class Meta:
+		verbose_name = 'Impacto_Social'
+		verbose_name_plural = 'Impacto_Social'
+
+	def __str__(self):
+		return str(self.nombre) + " " + str(self.dato)
+
+
 
 class Nosotros(models.Model):
     title = models.CharField(max_length=250, verbose_name="Título")
@@ -170,26 +202,3 @@ class Imagen_Nosotros(models.Model):
 
 	def __str__(self):
 		return str(self.titulo)
-
-
-
-
-class Testimonio(models.Model):
-	nombre = models.CharField(max_length=100,verbose_name="Nombre Completo")
-	texto = models.CharField(max_length=300,verbose_name="Testimonio")
-	foto = models.ImageField(upload_to = 'fotoTestimonio/',verbose_name="Foto")
-	fecha = models.DateField(blank=True, null=True, verbose_name="Fecha")
-	entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidad Vinculada")
-	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Vinculado")
-	#home = models.BooleanField(default=False)
-	
-	class Meta:
-		verbose_name = 'Testimonio'
-		verbose_name_plural = 'Testimonios'
-
-	def __str__(self):
-
-		return str(self.nombre) + " " + str(self.fecha) + " " + str(self.entidad) + " " + str(self.proyecto)  
-
-
-

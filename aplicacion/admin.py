@@ -9,6 +9,9 @@ admin.site.register(Video)
 admin.site.register(Colaborador)
 admin.site.register(Entidad)
 admin.site.register(Testimonio)
+admin.site.register(Impacto)
+
+
 
 
 

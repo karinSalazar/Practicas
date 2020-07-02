@@ -10,89 +10,89 @@
       <div class="container">
       </div>
     </section><!-- End Buscar -->
-			
+            
     <!-- ======= Portfolio Details Section ======= -->
     <!-- ======= Services Section ======= -->
-			    <section id="services" class="services">
-			      <div class="container" data-aos="fade-up">
+                <section id="services" class="services">
+                  <div class="container" data-aos="fade-up">
 
-				        <div class="section-title">
-				          <h2>Noticias</h2>
-				          <p>Últimas Noticias</p>
-				        </div>
+                        <div class="section-title">
+                          <h2>Noticias</h2>
+                          <p>Últimas Noticias</p>
+                        </div>
 
-				        <div class="row">
-				        	{% for press in prensa %}
-					          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-					            <div class="icon-box">
-					              
-					              <div class="box-entry-inner">
-					                        <img src="../../static/img/{{press.imagen}}" class="img-responsive" />
+                        <div class="container blog">
+                            <div class="row">
+                                <div class="col-12 col-lg-8">
 
+                                    {% for p in prensa %}
+                                    <!-- Single Blog Item -->
+                                    <div class="row align-items-center">
+                                        <div class="col-md-6 mt-4 objetindex">
+                                            <img src="{{ p.imagen.url }}" class="" alt="...">
 
-						               <div class="content">
-						             		<br/>
-							              <h3 class="pressname text-center text-uppercase"><a target="_blank" href="{{ p.link }}">{{press.titulo}}</a></h3><br/>
-							              <h6 class="text-justify">{{press.fecha}} by {{press.creado_por}}</h6>
-							              <p class="presstext text-justify">{{press.descripcion}}.</p>
-							              <a class="button button-skin" href="{{press.link}}" target="_blank">Leer Más</a>
-							           </div>
-						          </div>
-						          
-						        </div>
-					          </div>
-
-				           {% endfor %}       
-				        </div>
-				        <br/>
-
-			     
-    
-    	      
-
-       
-								<table class="text-center">
-									<thead>
-										<tr>
-											<th>
-															
-
-														{% if page_obj.has_next %}
-																<a class="get-started-btn" role="button" href="?page={{ page_obj.next_page_number }}"><p> Next </p> </a>
-														{% endif %}
-														{% if page_obj.has_previous %}
-																<a class="get-started-btn" role="button" href="?page={{ page_obj.previous_page_number }}"> <p> Back </p> </a>
-														{% endif %}
-
-											</th>
-										</tr>
-									</thead>
-								</table>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card-body p-0">
+                                                <h6 class="card-title text-center mt-4 text-uppercase" >{{ p.titulo }}</h6>
+                                                <p class="card-text"><small class="text-muted">{{ p.fecha }}</small></p>
+                                                <p class="card-text mb-0 text-justify">{{ p.descripcion|truncatechars:213 }}</p>
+                                                <a class="button button-skin" href="{% url 'aplicacion:infonoticia' p.id %}">Leer más...</a>     
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <br/>
 
 
+                                    <!-- Pagination -->
+                                    <nav class="dento-pagination mb-5 mt-5">
+                                        <ul class="pagination pagination-lg  justify-content-center mt-4">
+                                            <li class="page-item active">
+                                                {% if page_obj.has_previous %}
+                                                <a class="page-link" href="?page={{page_obj.previous_page_number}}"><i class="icofont-arrow-left"></i></a> {% endif %}
+                                            </li>
+                                            <li class="page-item">
+                                                {% if page_obj.has_next %}
+                                                <a class="page-link" href="?page={{page_obj.next_page_number}}"><i class="icofont-arrow-right"></i></a> {% endif %}
+                                            </li>
 
-						 </div>
-			    </section><!-- End Services Section -->
+                                        </ul>
+                                    </nav>
 
-							
-
-
-  </main><!-- End #main -->
-  <script>
-		function Barrita() {
-			$('#not').addClass('active');
-        }
-		window.onload = Barrita
-    </script>
-
-					<!-----------------Content-------------------->
-						
-					
-
-{% endblock content %}	
-
- 
+                                </div>
 
 
+                                <!-- Dento Sidebar Area -->
+                                <div class="col-10 col-lg-4 col-12 col-md-8">
+                                
+                                    <div class="dento-sidebar ">
+                                        <!-- Single Widget Area -->
+                                        <div class="single-widget-area news-widget mt-4">
+                                            <h4 class="card-title text-center mt-4 mb-3 ">LOS MÁS DESTACADOS</h3>
+                                            <!-- Single News Area -->
+                                            {% for p in destacados %}
+                                            <div class="single-news-area d-flex align-items-center row">
+                                                <div class="col-10 mb-2 objetnoticias">
+                                                    <img class="imgdesta" src="{{ p.imagen.url }}" alt=" ">
+                                                </div>
+                                                <div class="col-4">
+                                                    <a class="title text-uppercase" href="{% url 'aplicacion:infonoticia' p.id %}" class="post-title">{{ p.titulo }}</a>
+                                                    <br>
+                                                    <span class="post-date">{{ p.fecha }}</span>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
 
+                    </div>
+                </section>
+</main>
+                    
+{% endblock content %}
