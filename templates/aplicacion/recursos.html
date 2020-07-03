@@ -37,44 +37,43 @@
 
         <div class="row"  id="myList">
         	{% for r in res %}
+        	{% if r.status == True %}
 		          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
 		            <div class="member" data-aos="fade-up" data-aos-delay="100">
-		              <div class="member-img">
+		              <div class="member-img objetrecursos">
 		                <img src="../../static{{r.imagen.url}}" class="img-fluid" alt="">
 		                <div class="social">
-		                    <a target ="_blank" class ="btn btn-skin recdescargas text-center" href= "../../static/img/{{r.archivo}}">
-							<i class="icofont-download"></i> </a>                  
+		                    <a target ="_blank" title="Descarga" class ="btn btn-skin recdescargas text-center" href= "../../static/img/{{r.archivo}}">
+							<i class="icofont-download"></i> </a>   
+							<a target ="_blank" title="Vínculo" href="{{r.link}}"><i class="bx bx-link"></i></a>            
 		                </div>
 		              </div>
 		              <div class="member-info">
 		                <h4 class="text-uppercase text-center">{{r.nombreRecurso}}</h4>
-		                <span>{{r.proyecto.nombreProyecto}}</span>
+		                <span class="text-center" >{{r.entidad.nombreEntidad}}</span>
 		              </div>
 		            </div>
-		          </div>      
-           	{% endfor %}   
+		          </div>  
+		    {% endif %}     
+           	{% endfor %}            	 
         </div>
+
+        		<nav class="dento-pagination mb-5 mt-5">
+                    <ul class="pagination pagination-lg  justify-content-center mt-4">
+                        <li class="page-item active">
+                        {% if page_obj.has_previous %}
+                            <a class="page-link" href="?page={{page_obj.previous_page_number}}"><i class="ri ri-arrow-left-line"></i></a> {% endif %}
+                        </li>
+                        <li class="page-item">
+                        {% if page_obj.has_next %}
+                            <a class="page-link" href="?page={{page_obj.next_page_number}}"><i class="ri ri-arrow-right-line"></i></a> {% endif %}
+                        </li>
+                    </ul>
+             	</nav>  
+
         </div>
     </section><!-- End Team Section -->
-    <section>
-
-     
-					<table>
-						<thead>
-							<tr>
-								<th>
-									{% if page_obj.has_next %}
-									<a class="btn btn-success" role="button" href="?page={{ page_obj.next_page_number }}">"Next"</a>
-									{% endif %}
-									{% if page_obj.has_previous %}
-									<a class="btn btn-success" role="button" href="?page={{ page_obj.previous_page_number }}">"Back"</a>
-									{% endif %}
-								</th>
-							</tr>
-						</thead>
-					</table> hola
-	</section>
-	 
+   
 				
 
 	<script>

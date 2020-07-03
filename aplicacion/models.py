@@ -132,7 +132,7 @@ class Recurso(models.Model):
 	nombreRecurso = models.CharField(max_length=40, verbose_name="Nombre de la Transferencia")
 	archivo = models.FileField(null=True,upload_to='transferencias/')
 	link = models.URLField(null=True, blank=True)
-	proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE, null=True, verbose_name="Proyecto vinculado")
+	entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE, null=True, verbose_name="Entidad vinculada")
 	imagen = models.ImageField(upload_to ='recursos/', default = 'descarga.jpg')
 	status =models.BooleanField(default=True, verbose_name="Si activa esta opción será público")
 

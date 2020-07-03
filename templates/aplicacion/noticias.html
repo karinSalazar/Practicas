@@ -24,18 +24,17 @@
                         <div class="container blog">
                             <div class="row">
                                 <div class="col-12 col-lg-8">
-
                                     {% for p in prensa %}
                                     <!-- Single Blog Item -->
                                     <div class="row align-items-center">
-                                        <div class="col-md-6 mt-4 objetindex">
-                                            <img src="{{ p.imagen.url }}" class="" alt="...">
+                                        <div class="col-md-6 mt-4 objetnoticias">
+                                            <img src="{{ p.imagen.url }}" class="Rounded Corners" alt="...">
 
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-body p-0">
                                                 <h6 class="card-title text-center mt-4 text-uppercase" >{{ p.titulo }}</h6>
-                                                <p class="card-text"><small class="text-muted">{{ p.fecha }}</small></p>
+                                                <p class="card-text"><small class="text-muted">{{ p.fecha }} by {{p.creado_por}} </small></p>
                                                 <p class="card-text mb-0 text-justify">{{ p.descripcion|truncatechars:213 }}</p>
                                                 <a class="button button-skin" href="{% url 'aplicacion:infonoticia' p.id %}">Leer más...</a>     
                                                 
@@ -63,27 +62,31 @@
 
                                 </div>
 
+                                <div class="col-10 col-lg-1 col-12 col-md-8">
+                                </div>
+                                                             
 
                                 <!-- Dento Sidebar Area -->
-                                <div class="col-10 col-lg-4 col-12 col-md-8">
-                                
-                                    <div class="dento-sidebar ">
+                                <div class="col-10 col-lg-3 col-12 col-md-8">
+                                                             
+                                    <div class="dento-sidebar rounded" id="rcorners2">
                                         <!-- Single Widget Area -->
                                         <div class="single-widget-area news-widget mt-4">
                                             <h4 class="card-title text-center mt-4 mb-3 ">LOS MÁS DESTACADOS</h3>
+                                                <br/>
                                             <!-- Single News Area -->
                                             {% for p in destacados %}
                                             <div class="single-news-area d-flex align-items-center row">
-                                                <div class="col-10 mb-2 objetnoticias">
-                                                    <img class="imgdesta" src="{{ p.imagen.url }}" alt=" ">
+                                                <div class="col-12 mb-4 blog-thumbnail">
+                                                    <img src="{{ p.imagen.url }}" class="img-thumbnail float-right" alt="" width="80" height="40">
+                                                    <div class="col-4">
+                                                        <a class="post-title text-uppercase text-lg-center" href="{% url 'aplicacion:infonoticia' p.id %}" >{{ p.titulo }}</a>
+                                                    </div>
                                                 </div>
-                                                <div class="col-4">
-                                                    <a class="title text-uppercase" href="{% url 'aplicacion:infonoticia' p.id %}" class="post-title">{{ p.titulo }}</a>
-                                                    <br>
-                                                    <span class="post-date">{{ p.fecha }}</span>
-                                                </div>
+
                                             </div>
                                             {% endfor %}
+                                            <br/>
                                         </div>
                                     </div>
                                 </div>
