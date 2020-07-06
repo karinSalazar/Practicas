@@ -565,6 +565,17 @@ section {
 
 .about .content p:last-child {
   margin-bottom: 0;
+  margin-top: 100px;
+}
+
+.about .section-title p h2{
+  margin: 0;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #151515;
 }
 
 /*--------------------------------------------------------------
@@ -1597,10 +1608,17 @@ section {
 .objetfit  img{width: 200px; height: 150px; object-fit: none;}
 .pressname {height: 80px; overflow: hidden;}
 .presstext {height: 180px; overflow: hidden;}
-
+.pressnoti {height: 60px; overflow: hidden;}
 
 
 .objetindex  img{width: 400px; height: 200px; object-fit: cover;}
+
+.pressnoticia {height: 80px; overflow: hidden;}
+.presstextnoticia {height: 180px; width: auto; overflow: hidden;}
+.about .content h6 {
+  font-size: 5px;
+  font-family: italic;
+}
 
 .objetnoticias  img{width: 300px; height: 230px; object-fit: fill;}
 

@@ -175,9 +175,6 @@
 
 <!--=======fin proyecto del año=======-->
 
-
-
-
        
         
 <!-- ======= About Section ======= -->
@@ -191,10 +188,10 @@
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
             <img src="assets/img/about.jpg" class="img-fluid" alt="">
-            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+            <img src="{% static 'img/tomilloIndex.jpg' %}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <h4>Experiencia Vocacional en Empresa - EVE.</h4>
+            
             <p class="font-italic text-justify">        
         El proyecto EVE son las siglas de Experiencia Vocacional en Empresa. Es una experiencia formativa y de desarrollo vocacional para jóvenes en riesgo de exclusión con edades de entre 16 y 21 años, llevada a cabo en un entorno empresarial con el fin de mejorar su empleabilidad,...<a target="_blank" class="cta-btn" href="{% url 'aplicacion:nosotros'  %}">Ver Más</a>
             </p>
@@ -206,6 +203,8 @@
     </section><!-- End About Section -->     
 
 <!--======= fin de acerca de nosotros ========-->
+
+
 
 <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
@@ -237,6 +236,8 @@
     </section>
 <!-- ======= End Cta Section ======= -->
 
+
+
 <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
@@ -249,16 +250,14 @@
           <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
           <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
             <div class="content d-flex flex-column justify-content-center">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
+             
               <div class="row">
                 {% for n in numero %}
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="icofont-tick-mark"></i>
                     <span data-toggle="counter-up">{{ n.dato }}</span>
-                    <p class="text-justify text-lowercase"><strong class="text-capitalize">{{ n.nombre }},</strong> {{ n.texto }}.</p>
+                    <p class="text-justify text-lowercase"><strong class="text-capitalize">{{ n.nombre }}</strong>,{{ n.texto }}.</p>
                   </div>
                 </div>
                 {% endfor %}              
@@ -338,19 +337,9 @@
 <!-- ======= End Features Section =======-->
 
 
-
- 
-   
-    
-   
-
-    
-
-    
-
     
     
-    <!--agregado frase start-->
+<!--========agregado frase start========-->
 
     <section class="content-box box-2 box-style-2">
         <div class="zerogrid">
@@ -366,53 +355,65 @@
         </div>
       </section>
 
-    <!--fin agregado-->
+<!--========fin agregado========-->
 
-    <!--agregado start-->
+
+
+<!--========agregado start noticias========-->
 
          
-      <section class="content-box box-5">
-        <div class="zerogrid-fluid">
-          <div class="wrap-box"><!--Start Box-->
-            <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
-              <h3>Últimas Noticias</h3>                      
-              <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
+      <section id="features" class="features">
+      <br/>
+      <div class="container" data-aos="fade-up">
+            <div class="section-title">
+              <h2>Noticias</h2>
+              <p>Últimas Noticias...</p>
             </div>
+
+            <br/>
             <div class="content wow fadeInRight" data-wow-delay=".1s" data-wow-duration="1s">
-              
-             
-
-                <div class="owl-carousel">
-                                          
-
-                {% for press in prensa %}
-                <div class="sm-1-3">
-                  
-                  <div class="wrap-col">
-                    <div class="box-entry">
-                       
-                      <div class="box-entry-inner objetfit">
-                        <img src="../../static/img/{{press.imagen}}" class="img-responsive" />
-                        <div class="entry-details">
-                          <div class="entry-des">
-                            <span>{{press.fecha}}</span>
-                            <h3 class="pressname text-center text-uppercase"><a target="_blank" href="{{press.link}}">{{press.titulo}}</a></h3>
-                            <p class="presstext text-justify">{{press.descripcion}}.</p>
-                            <a class="button button-skin" href="{{press.link}}" target="_blank">Leer Más</a>
-                          </div>
+               <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                        <!--Slides-->
+                        <div class="carousel-inner" role="listbox">
+                            <!--First slide-->
+                            {% for p in prensa %} 
+                                                {% cycle 'start' '' '' as slidestart silent %} {% cycle '' '' 'end' as slideend silent %} 
+                            {% if slidestart == 'start' %}
+                            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                                <div class="row justify-content-around">
+                            {% endif %}
+                                    <div class="col-md-4">
+                                        <div class="testimonial">
+                                            <!--Avatar-->
+                                            <div class="avatar mx-auto d-flex justify-content-center objetnoti">
+                                              <img src="../../static/img/{{p.imagen}}" class="img-fluid" />
+                                            </div>
+                                            <!--Content-->
+                                            <h5 class="font-weight-bold mt-4 colorN text-uppercase text-center"> {{ p.titulo }}</h5>                               
+                                            <h6 class="blue-text font-weight-bold my-3 colorN"> {{ p.fecha }} </h6>
+                                            <div class="col-md-12 text-justify">
+                                                <p class="font-weight-normal">{{p.descripcion}}</p>
+                                            </div>
+                                        </div>
+                                        <a class="button button-skin" href="{% url 'aplicacion:infonoticia' p.id %}" target="_blank">Leer Más</a>
+                                    </div>
+                                    <!-- Comprueba cierre de slide-->
+                            {% if slideend == 'end' or forloop.last %}
+                                </div>
+                            </div>
+                            {% endif %} 
+                            {% endfor %}
                         </div>
-                      </div>
-                      
+                        <!--Slides-->
                     </div>
-                  </div>
-
-                 {% endfor %}
-             
-             </div>
-            </div>
-          </div>
-        </div>
+                </div>
+                <!--Carousel Wrapper-->
+       </div>
+                <!-- Grid row -->
       </section>
+
+
+<!--========agregado end noticias========-->
 
 
 

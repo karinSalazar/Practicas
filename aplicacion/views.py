@@ -10,6 +10,7 @@ from django.http import HttpResponse
 from random import shuffle
 from .forms import VideoAForm, VideoForm
 
+from django.http import HttpResponse
 from django.db.models import Q
 
 
@@ -110,30 +111,8 @@ class Resources(ListView):
     template_name = 'aplicacion/recursos.html'
     context_object_name= 'res' 
     queryset = Recurso.objects.all()
+        
 
-    
-    def year_archive(request, nombreRecurso):
-        a_list = Recurso.objects.filter(pub_date__year=nombreRecurso)
-        context = {'year': nombreRecurso, 'article_list': a_list}
-        return render(request, 'aplicacion/recursos.html', context)
-
-
-    def busqueda(self):
-        q = request.GET.get('q', '')
-        querys = (Q(proyecto__nombreProyecto__icontains=q) | Q(proyecto__nombreProyecto__icontains=q))
-        querys |= Q(nombreRecurso__icontains=q)
-        recursos = Recurso.objects.filter(querys)
-        return render(request, 'aplicacion/recursos.html', {'res': recursos})
-    
-    """def Buscar(request):
-                                if request.GET["dow"]:
-                                    nombreRecurso = request.GET["dow"]
-                                    articulo = Recurso.objects.filter(nombre_icontains=nombreRecurso)
-                                    return render(request, "aplicacion/recursos.html",{"articulo": articulo, "query":nombreRecurso})
-                                else: 
-                                    mensaje = "No has introducido nada"
-                                return HttpResponse(mensaje)
-            """
     def get_context_data(self, **kwargs):
         context = super(Resources, self).get_context_data(**kwargs)
         context['anual'] = ProyectoAnual.objects.all()
