@@ -1598,9 +1598,15 @@ section {
 .pressname {height: 80px; overflow: hidden;}
 .presstext {height: 180px; overflow: hidden;}
 
+
+
 .objetindex  img{width: 400px; height: 200px; object-fit: cover;}
 
 .objetnoticias  img{width: 300px; height: 230px; object-fit: fill;}
+
+.objetnot {height: 90px; width:150px; overflow: hidden; padding-top: 15%}
+
+
 
 .objetrecursos img{width: 300px; height: 180px; object-fit: fill;}
 

@@ -8,54 +8,44 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
+      </div>
+    </section><!-- End Buscar -->
+            
+    <!-- ======= Portfolio Details Section ======= -->
+    <!-- ======= Services Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Colaboradores</h2>
-          <ol>
-            <li>Sumando esfuerzos....</li>
-          </ol>
+        <div class="section-title">
+            <h2>Nuestros</h2>
+            <p>Colaboradores</p>
+        </div>
+
+        
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            {% for a in colaboradores %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app objetindex">
+            <div class="portfolio-wrap">
+              <img src="../../static/img/{{a.logo}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>{{ a.nombreColaborador }}</h4>
+                <div class="portfolio-links">
+                  <a href="../../static/img/{{a.logo}}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                  <a href="{{ a.link }}" target="_blank" title="Más Detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+            {% endfor %}   
+        
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section><!-- End Portfolio Section -->
 
-    <!-- ======= Portfolio Details Section ======= -->
-    
-
-        <br/>
-
-        <div id="page-content">
-		<div class="box-content">
-			<div class="container">
-
-
-				<div class="row">
-					{% for a in colaboradores %}
-                    <div class="col-md-4 text-center animate-box">
-                    	<div class="item">
-								<img src="../../static/img/{{a.logo}}" class="img-responsive"/>
-							</div> 
-                        <div class="product">
-                        	                           
-                            <div class="product-grid" style="background-image:url(' ../../static/img/{{a.foto}}');">
-                                
-                            	<div class="inner">                            	                            
-
-                                </div>
-							</div>
-							<div class="desc">
-								<h3><a class= "text-uppercase" target="_blank" href="{{ a.link }}">{{ a.nombreColaborador }}</a></h3>
-								<p class="font-weight-normal text-justify">{{ a.mision }}</p>
-							</div>
-                        </div>
-                    </div>
-                    {% endfor %}
-				</div>
-				<br/>
-			</div>
-		</div>
-		
-	</div>
+   
+     
+    </main>
 
 	<script>
 		function Barrita() {

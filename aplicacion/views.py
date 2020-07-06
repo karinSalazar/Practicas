@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from random import shuffle
-from .forms import VideoForm
+from .forms import VideoAForm, VideoForm
 
 from django.db.models import Q
 
@@ -40,9 +40,9 @@ class Inicio(SuccessMessageMixin, FormView):
         context['numero'] = Impacto.objects.all()
         context['enti'] = Entidad.objects.all()
         context['testi'] = Testimonio.objects.all().order_by('-id')[:5]
-        listaVideos=Video.objects.all()
+        listaVideos=ProyectoAnual.objects.all()
         if (len(listaVideos)>0): #Si hay videos
-            lastvideo= Video.objects.all()[0]
+            lastvideo= ProyectoAnual.objects.all()[0]
             context['videofile']= lastvideo.videofile
             
         return context
@@ -78,9 +78,9 @@ class ProgramaAnual(ListView):
         parametro = self.kwargs.get('id', None)
         context['anualId']=ProyectoAnual.objects.filter(id=parametro)
         context['project'] = Proyecto.objects.all()
-        listaVideos=Video.objects.all()
+        listaVideos=Proyecto.objects.all()
         if (len(listaVideos)>0): #Si hay videos
-            lastvideo= Video.objects.all()[0]
+            lastvideo= Proyecto.objects.all()[0]
             context['videofile']= lastvideo.videofile
 
         return context
@@ -155,6 +155,7 @@ class Partners(ListView):
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         return context
+
 
 
 

@@ -5,7 +5,7 @@ from django.utils.html import format_html
 
 
 
-admin.site.register(Video)
+#admin.site.register(Video)
 admin.site.register(Colaborador)
 admin.site.register(Entidad)
 admin.site.register(Testimonio)

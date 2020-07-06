@@ -50,23 +50,16 @@
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
+          
       <div class="container" data-aos="zoom-in">
-
         <div class="owl-carousel clients-carousel">
-          <img src="{% static 'img/LogoExit.jpg' %}" alt="">
-          <img src="{% static 'img/LogoOpcion3.png' %}" alt="">
-          <img src="{% static 'img/LogoNorteJoven.jpg' %}" alt="">
-          <img src="{% static 'img/LogoVerde.png' %}" alt="">          
-          <img src="{% static 'img/LogoRueca.png' %}" alt="">
-          <img src="{% static 'img/LogoOpcion3.png' %}" alt="">
-          <img src="{% static 'img/LogoNorteJoven.jpg' %}" alt="">
-          <img src="{% static 'img/LogoRueca.png' %}" alt="">
-          <img src="{% static 'img/LogoExit.jpg' %}" alt="">
-          <img src="{% static 'img/LogoVerde.png' %}" alt="">
+          {% for e in enti %} 
+          <img src="../../static/img/{{e.logo}}" alt="" href="{{e.link}}" target="_blank">
+          {% endfor %}
         </div>
-
-      </div>
-    </section><!-- End Clients Section -->
+      </div>      
+    </section>
+<!--======= End Clients Section =======-->
 		 
 
         </div>

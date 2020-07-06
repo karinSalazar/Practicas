@@ -60,7 +60,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{% url 'inicio' %}">Home</a></li>
-          <li id="nos"><a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
+          <li><a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
 
           <li class="drop-down"><a href="">Proyectos</a>
             <ul>
@@ -78,10 +78,10 @@
             </ul>
           </li>
 
-          <li id="rec"><a href="{% url 'aplicacion:recurso'  %}">Recursos</a></li>
-          <li id="col"><a href="{% url 'aplicacion:colaborador'  %}">Colaboradores</a></li>  
-          <li id="not"><a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>       
-          <li id="con"><a href="{% url 'aplicacion:contacto'  %}">Contacto</a></li>
+          <li><a href="{% url 'aplicacion:recurso'  %}">Recursos</a></li>
+          <li><a href="{% url 'aplicacion:colaborador'  %}">Colaboradores</a></li>  
+          <li><a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>       
+          <li><a href="{% url 'aplicacion:contacto'  %}">Contacto</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -139,7 +139,7 @@
                 <div class="lg-1-5 md-1-3 sm-1-2">
                   <div class="portfolio-box zoom-effect objetindex">
                     
-                  
+
                     <div class="portfolio-wrap">
                       <img src="../../static/img/{{promo.imagen}}" class="img-fluid" alt="">
                         <div class="portfolio-box-caption">
@@ -164,10 +164,7 @@
                   </div>
                   </div>
                 {% endif %} 
-                {% endfor %} 
-
-
-      
+                {% endfor %}       
               </div>
               {% endif %} 
               {% endfor %} 
@@ -178,6 +175,10 @@
 
 <!--=======fin proyecto del año=======-->
 
+
+
+
+       
         
 <!-- ======= About Section ======= -->
     <section id="about" class="about">
@@ -197,16 +198,7 @@
             <p class="font-italic text-justify">        
         El proyecto EVE son las siglas de Experiencia Vocacional en Empresa. Es una experiencia formativa y de desarrollo vocacional para jóvenes en riesgo de exclusión con edades de entre 16 y 21 años, llevada a cabo en un entorno empresarial con el fin de mejorar su empleabilidad,...<a target="_blank" class="cta-btn" href="{% url 'aplicacion:nosotros'  %}">Ver Más</a>
             </p>
-            <h5>¿Qué jóvenes participan?</h5>
-            <br/>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Jóvenes en riesgo de exclusión social.</li>
-              <li><i class="ri-check-double-line"></i> Que tengan necesidad de una orientación para poder llegar a definir su proyecto profesional o que precisan de elementos de apoyo complementarios.</li>
-              <li><i class="ri-check-double-line"></i> Con una edad de entre 16 años y 21 años.</li>
-              <li><i class="ri-check-double-line"></i> Con documentación en regla.</li>
-            </ul>
-            <br/>
-            
+                      
           </div>
         </div>
 
@@ -221,7 +213,8 @@
       <div class="container" data-aos="zoom-in">
         <div class="owl-carousel clients-carousel">
           {% for e in enti %} 
-          <img src="../../static/img/{{e.logo}}" alt="" href="{{e.link}}" target="_blank">
+           <img src="../../static/img/{{e.logo}}" alt="" target="_blank" class="img-fluid">                                                
+
           {% endfor %}
         </div>
       </div>      

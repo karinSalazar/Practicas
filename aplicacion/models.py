@@ -40,7 +40,7 @@ class ProyectoAnual(models.Model):
 	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
 	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
-	#videofile = models.FileField(upload_to='videoProyectoAnual/', blank=True, verbose_name="Video del Proyecto")
+	videofile = models.FileField(upload_to='videoProyectoAnual/', blank=True, verbose_name="Video del Proyecto Anual")
 	status =models.BooleanField(default=True,verbose_name="activo")
 		
 	class Meta:
@@ -59,8 +59,10 @@ class Proyecto(models.Model):
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto")	
 	proyectoAnual = models.ForeignKey(ProyectoAnual, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Anual Vinculado")
 	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
+	logros = models.CharField(max_length=300,null=True,verbose_name="Logros")
 	imagen = models.ImageField(upload_to = 'imagesProyecto/',verbose_name="Imagen General")
 	entidades = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidades Vinculado")
+	videofile= models.FileField(upload_to='videos/', null=True, verbose_name="Video")
 	history = HistoricalRecords()
 	
 	class Meta:
@@ -86,21 +88,6 @@ class Imagen_Proyecto(models.Model):
 	def __str__(self):
 		return str(self.tituloProyecto)
 
-
-
-
-class Video(models.Model):
-    name= models.CharField(max_length=500,verbose_name="Nombre del Video")
-    videofile= models.FileField(upload_to='videos/', null=True, verbose_name="Video")
-    proyectoA = models.ForeignKey(ProyectoAnual, on_delete=models.CASCADE,null=True,verbose_name="Proyecto Anual Vinculado")
-    principal =models.BooleanField(default=True,verbose_name="Ver página principal")
-
-    class Meta:
-    	verbose_name = 'Video'
-    	verbose_name_plural = 'Videos'
-
-    def __str__(self):
-    	return str(self.name) + ": " + str(self.videofile)+ ": " + str(self.proyectoA)
 
 
 

@@ -8,11 +8,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          
+        <div class="d-flex justify-content-between align-items-center">          
         </div>
-
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -25,226 +22,93 @@
               <h2>Proyecto Actual</h2>
               <p>{{p.titulo}}</p>
             </div>
-              {% endfor %}
+            <div class="col-lg-12 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+              <p class="font-italic text-justify">
+                {{p.descripcion}}
+              </p>   
+            </div>
+            <br/>
+             
         </div>
     
-      <div id="about" class="container about" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="st/img/about.jpg" class="img-fluid" alt="">
-               {% if videofile %}
-                    <section class="view intro-video">
-                        <div class="wow fadeIn">
-                            <video class="video-fluid z-depth-300 " autoplay loop controls muted>
-                                <source class="embed-responsive-item" src=' {{ MEDIA_URL }}{{ videofile }} ' type='video/mp4 ' 
-                                    allowfullscreen="" frameborder="50|7000" />
-                            </video>
-
-                        </div>
-
-                        <script>
-                            'undefined ' === typeof _trfq || (window._trfq = []);
-                            'undefined ' === typeof _trfd && (window._trfd = []), _trfd.push({
-                                'tccl.baseHost ': 'secureserver.net '
-                            }), _trfd.push({
-                                'ap ': 'cpsh '
-                            }, {
-                                'server ': 'p3plcpnl0769 '
-                            })
-                        </script>
-                    </section>
-                {% endif %}
-
-
-
-
-
-
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-----------------content-box-4-------------------->
-      <section class="content-box box-4">
-        <div class="zerogrid-fluid">
-          <div class="wrap-box">
-            <div class="header wow fadeInUp" data-wow-delay=".1s" data-wow-duration="1s">
-              <h2>Projects Gallery</h2>
-              <span class="intro">Lorem ipsum dolor sit amet consectetur adipisicing</span>
-            </div>
-            <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
-              <div class="row">
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/12.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/13.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/14.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="lg-1-4 md-1-3 sm-1-2">
-                  <div class="portfolio-box zoom-effect">
-                    <img src="{% static 'img/15.jpg' %}" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                      <div class="portfolio-box-caption-content">
-                        <div class="project-name">
-                          Project Name
-                        </div>
-                        <div class="project-category">
-                          Category
-                        </div>
-                        <div class="project-button">
-                          <a href="single.html" class="button button-skin">Read More</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <br/>
       
-      <!-----------------content-box-5-------------------noticias----->
-        
 
-   
+            {% for promo in project %}   
+                {% if p.id == promo.proyectoAnual.id %}  
+              
+                        <div id="about" class="container about" data-aos="fade-up">
+                          <div class="row">
+                              <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                
+                                 {% if videofile %}
+
+                                      <section class="view intro-video">
+                                          <div class="wow fadeIn">
+                                              <video class="video-fluid z-depth-300 " autoplay loop controls muted>
+                                                  <source class="embed-responsive-item" src=' {{ MEDIA_URL }}{{ promo.videofile }} ' type='video/mp4 ' 
+                                                      allowfullscreen="" frameborder="50|7000" />
+                                              </video>
+                                          </div>
+                                          <script>
+                                              'undefined ' === typeof _trfq || (window._trfq = []);
+                                              'undefined ' === typeof _trfd && (window._trfd = []), _trfd.push({
+                                                  'tccl.baseHost ': 'secureserver.net '
+                                              }), _trfd.push({
+                                                  'ap ': 'cpsh '
+                                              }, {
+                                                  'server ': 'p3plcpnl0769 '
+                                              })
+                                          </script>
+                                      </section>
+                                  {% endif %}
+
+                              </div>
+                              <br/>
+                              <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                                    <h3 class="text-capitalize">{{promo.nombreProyecto}}.</h3>
+                                    <p class="font-italic text-justify">
+                                      {{promo.descripcion}}
+                                    </p>
+                                    
+                                        <dl>{% autoescape off%}
+                                              <ul>
+                                                <li><i class="ri-check-double-line"></i> {{promo.logros}}  </li>
+                                                <li><i class="bx bx-photo-album"></i> <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" title="Más Detalles">Ver Misceláneas</a></li>
+                                                
+                                              </ul>
+
+                                              <dt>Entidad a Cargo:</dt>
+                                                                                        
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="product"><br>                                            
+                                                                <img src="{{promo.entidades.logo.url}}" class="img-responsive" alt="#">
+                                                                <div class="portfolio-box-caption">
+                                                                    <div class="portfolio-box-caption-content">
+                                                                          <div class="portfolio-links">
+                                                                            <a target="_blank" href="{{promo.entidades.link}}" title="Más Detalles"><i class="bx bxs-hand-up"></i></a>
+                                                                          </div>
+                                                                    </div>
+                                                                </div>                                                                                    
+                                                        </div>
+                                                    </div>
+                                                    
+                                             {% endautoescape %}
+                                          </dl>
+
+                                </div>
+                            </div>
+                        </div>
+            {% endif %} 
+        {% endfor %} 
+        {% endfor %}
+        <br/>
+
+       </section>
+
 </main>
 
 
-
-<div id="page-content">
-        <div class="box-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <!-----------------Content-------------------->
-                        <article>
-                            <div class="wrap-post"><!--Start Box-->
-                                {% for k in formacionId %}
-                                <div class="entry-header">
-                                    <h1 class="entry-title text-center text-uppercase">{{k.nombrePrograma}}</a></h2>
-                                </div>
-                                <div class="post-thumbnail-wrap">
-                                    <div class="portfolio-box zoom-effect">
-                                        <img src="{{k.imagen.url}}" class="img-responsive text-center" alt="">
-                                    </div>
-                                </div>
-                                <div class="entry-content">
-                                    <p class="text-justify">{{k.descripcion}}</p>
-                                    <dl>
-                                        <dt>Content:</dt>
-                                        {% autoescape off%}
-                                        <dd>{{k.contenido}} </dd>
-                                        {% endautoescape %}<br/>
-                                        <dt>Requirements:</dt>
-                                        {% autoescape off%}
-                                        <dd>{{k.requisitos}}</dd>
-                                        {% endautoescape %}<br/>
-                                        <dt>Starting Date:</dt>
-                                        {% autoescape off%}
-                                        <dd>{{k.inicio}}</dd>
-                                        {% endautoescape %}<br/>
-                                        <dt>Hours:</dt>
-                                        {% autoescape off%}
-                                        <dd>{{k.horas}}</dd>
-                                        {% endautoescape %}<br/>
-                                        <dt>Place:</dt>
-                                        {% autoescape off%}
-                                        <dd>{{k.lugar}}</dd>
-                                        {% endautoescape %}<br/>
-                                        <dt>Sponsors:</dt>
-                                        {% autoescape off%}
-                                        <dd>{{k.patrocinador}}</dd>
-                                        {% endautoescape %}<br/>
-                                    </dl> 
-                                    <br/>
-                                </div>
-                                <div class="row">
-                                    {% for p in k.logo.all %}<br>
-                                    <div class="col-md-6 text-center">
-                                        <div class="product"><br>                                            
-                                                <img src="{{p.logo.url}}" class="img-responsive" alt="#">                                            
-                                        </div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                                <a class="btn btn-skin btn-block" href="{% url 'tomillo:contact' %}">Register</a>
-
-                            {% endfor %}
-                        </div>
-                    </article>
-                </div>               
-            </div>
-            </div>
-        </div>
-    </div>
 
    <script>
         function Barrita() {

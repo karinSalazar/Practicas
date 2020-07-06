@@ -28,11 +28,12 @@
                                     <!-- Blog Details Area -->
 
                                     <div class="blog-details-area">
-                                        <h2 class="post-title mt-3 text-center text-uppercase">{{ info.titulo }}</h2>
+                                        <h1 class="post-title text-uppercase text-lg-center">{{ info.titulo }}</h1>
                                         <br/>
                                         <img class="imgblog2 mx-auto d-block" src="{{ info.imagen.url }}" alt="imagen"> 
                                         <div class="post-meta">
                                             <a href="#"><i class="icon_clock_alt"></i>{{ info.fecha }}</a>
+                                            <a class="btn btn-skin" href="{{info.link}}" target="_blank" title="Más Detalles"><i class="bx bx-link"></i></a>
                                         </div>
                                         <p class="text-justify">{{ info.body }}</p>
 
@@ -45,5 +46,13 @@
                   </div>
               </section>
 </main>
+
+      
+  <script>
+        function Barrita() {
+            $('#not').addClass('active');
+        }
+        window.onload = Barrita
+    </script>
 
 {% endblock content%}

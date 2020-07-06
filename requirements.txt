@@ -1,3 +1,4 @@
 whitenoise[brotli]
 
 django-simple-history
+django-embed-video

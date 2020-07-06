@@ -79,8 +79,8 @@
                                             <div class="single-news-area d-flex align-items-center row">
                                                 <div class="col-12 mb-4 blog-thumbnail">
                                                     <img src="{{ p.imagen.url }}" class="img-thumbnail float-right" alt="" width="80" height="40">
-                                                    <div class="col-4">
-                                                        <a class="post-title text-uppercase text-lg-center" href="{% url 'aplicacion:infonoticia' p.id %}" >{{ p.titulo }}</a>
+                                                    <div class="col-4 objetnot">
+                                                        <a class="post-title text-uppercase text-lg-center" title="{{ p.titulo }}" href="{% url 'aplicacion:infonoticia' p.id %}" >{{ p.titulo }}</a>
                                                     </div>
                                                 </div>
 
@@ -97,5 +97,16 @@
                     </div>
                 </section>
 </main>
+
+ 
+
+      
+  <script>
+        function Barrita() {
+            $('#not').addClass('active');
+        }
+        window.onload = Barrita
+    </script>
+
                     
 {% endblock content %}
