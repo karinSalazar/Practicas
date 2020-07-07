@@ -151,7 +151,7 @@
                                   {{promo.entidades.nombreEntidad}}
                                 </div>
                                 <div class="project-button">
-                                  <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" class="button button-skin">Read More</a>
+                                  <a target="_blank" href="{% url 'aplicacion:proyectoAnual' pro.id %}" class="button button-skin">Read More</a>
                                 </div>
                                 <div class="portfolio-links">
                                   <a href="../../static/img/{{promo.imagen}}" data-gall="portfolioGallery" class="venobox" title="Proyecto del Año"><i class="bx bx-plus"></i></a>
@@ -238,65 +238,6 @@
 
 
 
-<!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Logros</h2>
-          <p>Impacto Social</p>
-        </div>
-
-        <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
-          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
-            <div class="content d-flex flex-column justify-content-center">
-             
-              <div class="row">
-                {% for n in numero %}
-                <div class="col-md-6 d-md-flex align-items-md-stretch">
-                  <div class="count-box">
-                    <i class="icofont-tick-mark"></i>
-                    <span data-toggle="counter-up">{{ n.dato }}</span>
-                    <p class="text-justify text-lowercase"><strong class="text-capitalize">{{ n.nombre }}</strong>,{{ n.texto }}.</p>
-                  </div>
-                </div>
-                {% endfor %}              
-              </div>
-            </div><!-- End .content-->
-          </div>
-        </div>
-
-      </div>
-    </section>
-<!-- ======= End Counts Section =====-->
-
-
-<!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="owl-carousel testimonials-carousel">
-          {% for t in testi %}
-          <div class="testimonial-item">
-            <img src="../../static/img/{{t.foto}}" class="testimonial-img" alt="">
-            <h3 class="text-capitalize">{{ t.nombre }}</h3>
-            <h4 class="text-uppercase">{{ t.proyecto }}</h4>
-            <h4 class="text-capitalize">{{ t.entidad }}</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              {{ t.texto }}.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-          {% endfor %}
-        </div>
-
-      </div>
-    </section>
-<!--======= End Testimonials Section ======== -->
-
-  <br/>
-
 <!-- ======= Features Section ======= -->
     <section id="features" class="features">
       <br/>
@@ -337,7 +278,67 @@
 <!-- ======= End Features Section =======-->
 
 
-    
+
+<!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="owl-carousel testimonials-carousel">
+          {% for t in testi %}
+          <div class="testimonial-item">
+            <img src="../../static/img/{{t.foto}}" class="testimonial-img" alt="">
+            <h3 class="text-capitalize">{{ t.nombre }}</h3>
+            <h4 class="text-uppercase">{{ t.proyecto }}</h4>
+            <h4 class="text-capitalize">{{ t.entidad }}</h4>
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              {{ t.texto }}.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+<!--======= End Testimonials Section ======== -->
+
+  <br/>
+
+
+
+<!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Logros</h2>
+          <p>Impacto Social</p>
+        </div>
+
+        <div class="row no-gutters">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+            <div class="content d-flex flex-column justify-content-center">
+             
+              <div class="row">
+                {% for n in numero %}
+                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                  <div class="count-box">
+                    <i class="icofont-tick-mark"></i>
+                    <span data-toggle="counter-up">{{ n.dato }}</span>
+                    <p class="text-justify text-lowercase"><strong class="text-capitalize">{{ n.nombre }}</strong>,{{ n.texto }}.</p>
+                  </div>
+                </div>
+                {% endfor %}              
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section>
+<!-- ======= End Counts Section =====-->
+  
     
 <!--========agregado frase start========-->
 
@@ -385,13 +386,14 @@
                                     <div class="col-md-4">
                                         <div class="testimonial">
                                             <!--Avatar-->
-                                            <div class="avatar mx-auto d-flex justify-content-center objetnoti">
+                                            <div class="avatar mx-auto d-flex justify-content-center objetindex">
                                               <img src="../../static/img/{{p.imagen}}" class="img-fluid" />
                                             </div>
                                             <!--Content-->
-                                            <h5 class="font-weight-bold mt-4 colorN text-uppercase text-center"> {{ p.titulo }}</h5>                               
-                                            <h6 class="blue-text font-weight-bold my-3 colorN"> {{ p.fecha }} </h6>
-                                            <div class="col-md-12 text-justify">
+                                            
+                                            <div class="col-md-12 text-justify entry-des">
+                                                <h5 class="font-weight-bold mt-4 colorN text-uppercase text-center"> {{ p.titulo }}</h5>                               
+                                                <span><a> {{ p.fecha }} </a></span>
                                                 <p class="font-weight-normal">{{p.descripcion}}</p>
                                             </div>
                                         </div>
@@ -399,6 +401,10 @@
                                     </div>
                                     <!-- Comprueba cierre de slide-->
                             {% if slideend == 'end' or forloop.last %}
+
+                                                     
+                          
+
                                 </div>
                             </div>
                             {% endif %} 

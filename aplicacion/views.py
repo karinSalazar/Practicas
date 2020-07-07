@@ -37,7 +37,7 @@ class Inicio(SuccessMessageMixin, FormView):
         context['nos'] = Nosotros.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
-        context['prensa'] = Noticia.objects.all()
+        context['prensa'] = Noticia.objects.all().order_by('-fecha')[:6]
         context['numero'] = Impacto.objects.all()
         context['enti'] = Entidad.objects.all()
         context['testi'] = Testimonio.objects.all().order_by('-id')[:5]
