@@ -39,7 +39,7 @@ class Entidad(models.Model):
 class ProyectoAnual(models.Model):
 	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
-	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
+	descripcion = models.TextField(max_length=800,null=True,verbose_name="Descripción")
 	status =models.BooleanField(default=True,verbose_name="activo")
 		
 	class Meta:

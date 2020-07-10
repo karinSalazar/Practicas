@@ -1724,6 +1724,7 @@ section {
     inset 0 0 5px 3px gold, 
     0 0 5px gold; 
   border-radius:1em/0.75em;
+
   /*display:inline-block;
   background-image: inherit;
   background-color:white;
@@ -1749,3 +1750,47 @@ section {
 
 .intro {display: block;font-weight: 300;color: #999;margin-top: 25px;letter-spacing: 2.5px;}
 .box-style-1{background: #f7f7f7;}
+
+.sombraProyecto{
+  margin: 5px auto;
+  border: 3px solid #1c1f02;
+  width: auto;
+  height: auto;
+  box-shadow:  
+    inset 0 0 0 3px #026e2d,
+    inset 0 0 5px 3px gold, 
+    0 0 5px gold; 
+  border-radius:1em/0.75em;
+  transform:scale(1.5);
+  padding: 40px 45px 30px 45px;
+  }
+
+  .estilo{
+  text-shadow:
+    1px 1px 3px ivory, 
+    -1px -1px 3px #000;
+  }
+
+  /*
+  display:inline-block;
+  background-image: inherit;
+  background-color:white;
+  background-position:top;
+  background-attachement:fixed;
+  margin:2em 1em;
+  padding:0 2.25em;
+  min-width:50%;
+  box-shadow:
+    inset 0 0 0 3px  purple,
+    inset 0 0 5px 3px gold, 
+    0 0 5px gold;    
+  position:relative;  
+  overflow:hidden;
+  border-radius:1em/0.75em;
+  color:peru;
+  text-shadow:
+    1px 1px 3px ivory, 
+    -1px -1px 3px #000;
+  transform:scale(1.5);
+  */
+}
