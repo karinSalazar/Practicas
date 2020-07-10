@@ -8,43 +8,62 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2></h2>
+          <ol>
+            <li>Home</li>
+            <li><a href="{% url 'aplicacion:noticia'  %}">Noticias</a></li>
+            <li><a href="#">Detalle de la Noticia</a></li>
+          </ol>
+        </div>
       </div>
-    </section><!-- End Buscar -->
+    </section>
             
-    <!-- ======= Portfolio Details Section ======= -->
-    <!-- ======= Services Section ======= -->
-                <section id="services" class="services">
-                  <div class="container" data-aos="fade-up">
 
-                        <div class="section-title">
-                          <h2>Noticias</h2>
-                          <p>Últimas Noticias</p>
-                        </div>
+    <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Noticias</h2>
+                <p>Últimas Noticias</p>
+            </div>
+        </div>
+    </section>
 
 
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-lg-8 mb-100">
-                                    <!-- Blog Details Area -->
 
-                                    <div class="blog-details-area">
-                                        <h1 class="post-title text-uppercase text-lg-center">{{ info.titulo }}</h1>
-                                        <br/>
-                                        <img class="imgblog2 mx-auto d-block" src="{{ info.imagen.url }}" alt="imagen"> 
-                                        <div class="post-meta">
-                                            <a href="#"><i class="icon_clock_alt"></i>{{ info.fecha }}</a>
-                                            <a class="btn btn-skin" href="{{info.link}}" target="_blank" title="Más Detalles"><i class="bx bx-link"></i></a>
-                                        </div>
-                                        <p class="text-justify">{{ info.body }}</p>
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container" data-aos="fade-up">
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="portfolio-details-container">
 
-                        
-                  </div>
-              </section>
+            <div class="owl-carousel portfolio-details-carousel">
+              <img class="img-fluid"  src="{{ info.imagen.url }}" alt="">
+            </div>
+
+            <div class="portfolio-info">
+              <h3 class="text-uppercase">{{ info.titulo }}</h3>
+                <ul>
+                  <li><strong>Autor </strong>: {{ info.creado_por }}</li>
+                  <li><strong>Fecha </strong>: {{ info.fecha }} </li>
+                  <li><strong>Vínculos </strong>: <a href="{{info.link}}"  target="_blank" title="Más Detalles"><i class="bx bx-link"></i></a>
+                                                  <a href="../../static/img/{{info.imagen}}" data-gall="portfolioGallery" class="venobox" title="Ver Imagen"><i class="bx bx-plus"></i></a></li>
+                </ul>
+            </div>
+
+        </div>               
+         
+        <div class="portfolio-description">
+          <h2 class="text-uppercase">{{ info.titulo }}</h2>
+          <p class="text-justify">
+            {{ info.body }}.
+          </p>
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+
 </main>
 
       

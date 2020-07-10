@@ -14,12 +14,13 @@ class ContactoForm(forms.Form):
 
 
 
-class VideoAForm(forms.ModelForm):
+class VideoNosForm(forms.ModelForm):
     class Meta:
-        model= ProyectoAnual
+        model= Nosotros
         fields= ["titulo","videofile"]
 
-class VideoForm(forms.ModelForm):
+
+class VideoProForm(forms.ModelForm):
     class Meta:
         model= Proyecto
         fields= ["nombreProyecto","videofile"]

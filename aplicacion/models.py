@@ -40,7 +40,6 @@ class ProyectoAnual(models.Model):
 	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
 	descripcion = models.CharField(max_length=300,null=True,verbose_name="Descripción")
-	videofile = models.FileField(upload_to='videoProyectoAnual/', blank=True, verbose_name="Video del Proyecto Anual")
 	status =models.BooleanField(default=True,verbose_name="activo")
 		
 	class Meta:
@@ -62,7 +61,7 @@ class Proyecto(models.Model):
 	logros = models.CharField(max_length=300,null=True,verbose_name="Logros")
 	imagen = models.ImageField(upload_to = 'imagesProyecto/',verbose_name="Imagen General")
 	entidades = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidades Vinculado")
-	videofile= models.FileField(upload_to='videos/', null=True, verbose_name="Video")
+	videofile = models.FileField(upload_to='videoProyecto/', blank=True, verbose_name="Video del Proyecto Anual")
 	history = HistoricalRecords()
 	
 	class Meta:
@@ -166,26 +165,25 @@ class Impacto(models.Model):
 
 
 class Nosotros(models.Model):
-    title = models.CharField(max_length=250, verbose_name="Título")
-    description = models.TextField(max_length=250, verbose_name="Descripción")
-    video = models.FileField(blank=True, verbose_name="Video")
+    titulo = models.CharField(max_length=250, null=True, verbose_name="Título")
+    description = models.TextField(max_length=700, verbose_name="Descripción")
+    imagen = models.ImageField(upload_to = 'nosotros/',verbose_name="Imagen")
+    videofile= models.FileField(upload_to='nosotros/', null=True, verbose_name="Video")   
+    direccion = models.CharField(max_length=80, null=True, blank=True, verbose_name="Dirección")
+    tel = models.IntegerField(null= True,blank=True, verbose_name="Teléfono")
+    mail = models.EmailField(null= True,blank=True, verbose_name="Correo")
+    instagram = models.URLField(null=True,blank=True,verbose_name="Instagram")
+    facebook= models.URLField(null=True,blank=True, verbose_name="Facebook")
+    skype= models.URLField(null=True,blank=True, verbose_name="Skype")
+    linkedin= models.URLField(null=True,blank=True, verbose_name="Linkedin")
+    twitter= models.URLField(null=True,blank=True, verbose_name="Twitter")
+    
 
     class Meta:
-    	verbose_name = 'Imagen'
-    	verbose_name_plural = 'Imagenes'
+    	verbose_name = 'Nos'
+    	verbose_name_plural = 'Nosotros'
 
     def __str__(self):
-        return str(self.title)
+        return str(self.titulo)
 
 
-class Imagen_Nosotros(models.Model):
-	titulo = models.CharField(max_length=400,blank=True,null=True)
-	images = models.FileField(upload_to = 'images/')
-	imagenes = models.ForeignKey(Nosotros, on_delete=models.CASCADE, null=True)
-
-	class Meta:
-		verbose_name = 'Imagen_Nosotros'
-		verbose_name_plural = 'Imagenes_Nosotros'
-
-	def __str__(self):
-		return str(self.titulo)

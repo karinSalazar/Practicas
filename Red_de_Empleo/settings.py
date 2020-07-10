@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aplicacion',
     'simple_history',
-
     'embed_video',
 ]
 
@@ -172,8 +171,10 @@ MATERIAL_ADMIN_SITE = {
     'HEADER':  ('Red Joven'),  # Admin site header
     'TITLE':  ('Red Joven de Empleo'),  # Admin site title
     'FAVICON':  'img/logo_red.jpg',  # Admin site favicon (path to static should be specified)
+    
     'MAIN_BG_COLOR':  'black',  # Admin site main color, css color should be specified
     'MAIN_HOVER_COLOR':  'green',  # Admin site main hover color, css color should be specified
+    
     'PROFILE_PICTURE':  'img/admin.jpg',  # Admin site profile picture (path to static should be specified)
     'PROFILE_BG':  'img/bg-3.jpg',  # Admin site profile background (path to static should be specified)
     'LOGIN_LOGO':  'img/login.png',  # Admin site logo on login page (path to static should be specified)

@@ -145,7 +145,7 @@ header .main-header{position: relative;height: 100vh;width: 100%;background: url
 .content-box .header .intro {display: block;font-weight: 300;color: #999;margin-top: 25px;letter-spacing: 2.5px;}
 
 .content-box.box-style-1{background: #f7f7f7;}
-.content-box.box-style-2{background: url("../img/bg-2.jpg") no-repeat center center;position: relative;}
+.content-box.box-style-2{background: url("../img/tomilloIndex.jpg") no-repeat center center;position: relative;}
 .content-box.box-style-2:before{position: absolute;content: ""; height: 100%; width: 100%;top: 0;left: 0;right: 0;bottom: 0;visibility: initial;}
 .content-box.box-style-3{background: url("../img/bg-3.jpg") fixed no-repeat center center;position: relative;}
 .content-box.box-style-3:before{position: absolute;content: "";background: rgba(45, 50, 56, 0.4); height: 100%; width: 100%;top: 0;left: 0;right: 0;bottom: 0;visibility: initial;}

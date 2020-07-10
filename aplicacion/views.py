@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from random import shuffle
-from .forms import VideoAForm, VideoForm
+from .forms import VideoNosForm, VideoProForm
 
 from django.http import HttpResponse
 from django.db.models import Q
@@ -40,10 +40,11 @@ class Inicio(SuccessMessageMixin, FormView):
         context['prensa'] = Noticia.objects.all().order_by('-fecha')[:6]
         context['numero'] = Impacto.objects.all()
         context['enti'] = Entidad.objects.all()
+        context['colaboradores'] = Colaborador.objects.all()
         context['testi'] = Testimonio.objects.all().order_by('-id')[:5]
-        listaVideos=ProyectoAnual.objects.all()
+        listaVideos=Nosotros.objects.all()
         if (len(listaVideos)>0): #Si hay videos
-            lastvideo= ProyectoAnual.objects.all()[0]
+            lastvideo= Nosotros.objects.all()[0]
             context['videofile']= lastvideo.videofile
             
         return context
@@ -61,6 +62,8 @@ class AboutUs(TemplateView):
    
     def get_context_data(self, **kwargs):
         context = super(AboutUs, self).get_context_data(**kwargs)
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         return context
@@ -77,13 +80,11 @@ class ProgramaAnual(ListView):
     def get_context_data(self, **kwargs):
         context=super(ProgramaAnual, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['anualId']=ProyectoAnual.objects.filter(id=parametro)
         context['project'] = Proyecto.objects.all()
-        listaVideos=Proyecto.objects.all()
-        if (len(listaVideos)>0): #Si hay videos
-            lastvideo= Proyecto.objects.all()[0]
-            context['videofile']= lastvideo.videofile
-
+       
         return context
 
 
@@ -97,6 +98,8 @@ class Programa(ListView):
     def get_context_data(self, **kwargs):
         context=super(Programa, self).get_context_data(**kwargs)
         parametro = self.kwargs.get('id', None)
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['pro']=Proyecto.objects.filter(id=parametro)
         context['ima']=Imagen_Proyecto.objects.all()
@@ -115,6 +118,8 @@ class Resources(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Resources, self).get_context_data(**kwargs)
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         return context
@@ -131,6 +136,8 @@ class Partners(ListView):
         lista = list(Colaborador.objects.all())
         shuffle(lista)
         context['colaboradores'] = lista
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         return context
@@ -149,6 +156,8 @@ class Prensa(ListView):
         context = super(Prensa, self).get_context_data(**kwargs)
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['destacados']= Noticia.objects.filter(destacados = True)[:4]
         context['template']= 'aplicacion:noticia' 
         return context
@@ -165,6 +174,8 @@ class InfoPrensa(DetailView):
         context['info'] = Noticia.objects.get(pk = idnoticia)
         context['template']= 'aplicacion:infonoticia'
         context['idTemp'] = idnoticia
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         return context
 
     
@@ -186,12 +197,12 @@ class Contacto(SuccessMessageMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(Contacto, self).get_context_data(**kwargs)
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         return context
        
 
 
-
-     
     

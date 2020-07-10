@@ -583,6 +583,7 @@ section {
 --------------------------------------------------------------*/
 .clients {
   padding-top: 20px;
+  
 }
 
 .clients .owl-item {
@@ -593,9 +594,9 @@ section {
 }
 
 .clients .owl-item img {
-  width: 70%;
-  opacity: 0.5;
-  transition: 0.3s;
+  width: 100%;
+  opacity: 1;/*0.5*/
+  transition: 0.2s;
   -webkit-filter: grayscale(100);
   filter: grayscale(100);
 }
@@ -603,8 +604,9 @@ section {
 .clients .owl-item img:hover {
   -webkit-filter: none;
   filter: none;
-  opacity: 1;
+  opacity: 3;
 }
+
 
 .clients .owl-nav, .clients .owl-dots {
   margin-top: 5px;
@@ -632,7 +634,7 @@ section {
 }
 
 .features .icon-box {
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .features .icon-box h4 {
@@ -1153,7 +1155,7 @@ section {
 --------------------------------------------------------------*/
 .contact .info {
   width: 100%;
-  background: #fff;
+  background: #f7f7f7;
 }
 
 .contact .info i {
@@ -1443,11 +1445,11 @@ section {
 #footer .footer-top {
   background: #151515;
   border-bottom: 1px solid #222222;
-  padding: 60px 0 30px 0;
+  padding: 30px 0 30px 0;
 }
 
 #footer .footer-top .footer-info {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 #footer .footer-top .footer-info h3 {
@@ -1518,7 +1520,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul li {
-  padding: 10px 0;
+  padding: 5px 0;
   display: flex;
   align-items: center;
 }
@@ -1612,6 +1614,7 @@ section {
 
 
 .objetindex  img{width: 400px; height: 200px; object-fit: cover;}
+.objetnoticia  img{width: 400px; height: 200px; margin-top: 12px; object-fit: cover;}
 
 .pressnoticia {height: 80px; overflow: hidden;}
 .presstextnoticia {height: 180px; width: auto; overflow: hidden;}
@@ -1698,3 +1701,51 @@ section {
   height: auto;
 }
 
+.colores {
+  font-size: 28px;
+  padding: 20px;
+  text-align: center;
+  text-shadow: 2px 2px 2px #6ab52d;
+}
+
+
+.centrado{
+  margin-left: 30%;
+}
+
+
+.sombra {
+  margin: 5px auto;
+  border: 3px solid #1c1f02;
+  width: 500px;
+  height: 550px;
+  box-shadow:  
+    inset 0 0 0 3px #026e2d,
+    inset 0 0 5px 3px gold, 
+    0 0 5px gold; 
+  border-radius:1em/0.75em;
+  /*display:inline-block;
+  background-image: inherit;
+  background-color:white;
+  background-position:top;
+  background-attachement:fixed;
+  margin:2em 1em;
+  padding:0 2.25em;
+  min-width:50%;
+  box-shadow:
+    inset 0 0 0 3px  purple,
+    inset 0 0 5px 3px gold, 
+    0 0 5px gold;
+  position:relative;
+  overflow:hidden;
+  border-radius:1em/0.75em;
+  color:peru;
+  text-shadow:
+    1px 1px 3px ivory, 
+    -1px -1px 3px #000;
+  transform:scale(1.5);*/
+}
+
+
+.intro {display: block;font-weight: 300;color: #999;margin-top: 25px;letter-spacing: 2.5px;}
+.box-style-1{background: #f7f7f7;}

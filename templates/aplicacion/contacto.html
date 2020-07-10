@@ -8,6 +8,13 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2></h2>
+          <ol>
+            <li>Home</li>
+            <li><a href="#">Contacto</a></li>
+          </ol>
+        </div>
       </div>
     </section><!-- End Buscar -->
 			
@@ -36,11 +43,12 @@
 				{% endif %}
 							<div class="row">
 								<div class="col-md-4 box-item">
-									
+									{% for n in nos %}
 									<span> ¿Compartimos los mismos valores? <br> ¿Quieres ser parte de nuestro proyecto? <br> Déjanos un mensaje. </span><br> <br>
-									<h3>Llámanos:</h3> <br>
-									<p>+34 913 92 04 40</p>
-									<p>info@redJoven.org</p>
+									<h3>Contáctanos:</h3> <br>
+									<p>+34 {{n.tel}}</p>
+									<p>{{n.mail}}</p>
+									{% endfor %}
 								</div>
 								<div class="col-md-8">
 

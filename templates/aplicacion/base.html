@@ -95,33 +95,32 @@
         
 
   <!-- ======= Footer ======= -->
-  <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-3 col-md-6">
+          {% for n in nos %} 
+          <div class="col-lg-4 col-md-6">
             <div class="footer-info">
               <h3 class="logo"><img src="{% static 'img/logo_red.jpg' %}"></h3>
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> eve.redjoven@gmail.com <br>
+                <strong>Phone:</strong> +34 {{n.tel}}<br>
+                <strong>Email:</strong> {{n.mail}} <br>
               </p>
               <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="{{n.twitter}}" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="{{n.facebook}}" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="{{n.instagram}}" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="{{n.skype}}" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="{{n.linkedin}}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
               </div>
             </div>
           </div>
+          {% endfor %}
 
-          <div class="col-lg-2 col-md-6 footer-links">
+          <div class="col-lg-4 col-md-6 footer-links">
             <h4>Enlaces Útiles</h4>
+            <br/>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{% url 'aplicacion:nosotros'  %}">Nosotros</a></li>
@@ -132,31 +131,24 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Colaboradores</h4>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Entidades Participantes</h4>
+            <br/>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://larueca.info/">Asociación La Rueca</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://tomillo.org/">Fundación Tomillo</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://fundacionexit.org/">Fundación Exit</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://opcion3.es/">Opción 3</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://nortejoven.org/">Empleo Norte Joven</a></li>
+              {% for e in enti %}
+              <li><i class="bx bx-chevron-right"></i> <a target="_blank" href={{e.link}}>{{e.nombreEntidad}}</a></li>
+              {% endfor %}
             </ul>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
 
-          </div>
-
+          
         </div>
       </div>
     </div>
   </footer>
-  <!-- End Footer -->
+
+<!--======== End Footer ======== -->
 
 
   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>

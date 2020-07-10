@@ -3,21 +3,36 @@ from simple_history.admin import SimpleHistoryAdmin
 from .models import *
 from django.utils.html import format_html
 
+from django.contrib.admin import ModelAdmin, register
 
 
-#admin.site.register(Video)
-admin.site.register(Colaborador)
-admin.site.register(Entidad)
-admin.site.register(Testimonio)
-admin.site.register(Impacto)
 
+@register(Colaborador)
+class MaterialInfoAdmin(admin.ModelAdmin):
+    icon_name = 'comment'
 
+@register(Entidad)
+class MaterialTallerAdmin(admin.ModelAdmin):
+    icon_name = 'title'
+
+@register(Testimonio)
+class MaterialEventoAdmin(admin.ModelAdmin):
+    icon_name = 'date_range'
+
+@register(Impacto)
+class MaterialCampaAdmin(admin.ModelAdmin):
+    icon_name = 'change_history'
+
+@register(Nosotros)
+class MaterialCampaAdmin(admin.ModelAdmin):
+    icon_name = 'person'
 
 
 
 
 @admin.register(Recurso)
 class RecursoAdmin(admin.ModelAdmin):
+    icon_name = 'unarchive'
     list_display = ( "nombreRecurso", "descarga", "status")
     search_fields = ['nombreRecurso']
     list_per_page = 10 #paginar
@@ -39,7 +54,8 @@ class RecursoAdmin(admin.ModelAdmin):
 
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ("created", "fecha", "titulo")
+    icon_name = 'edit'
+    list_display = ("created", "updated", "fecha", "titulo")
     search_fields = ['titulo']
     list_per_page = 10
 
@@ -73,6 +89,7 @@ class ProyectoImageAdmin(admin.StackedInline):
 
 @admin.register(Proyecto)
 class ProyectoAdmin(admin.ModelAdmin):
+    icon_name = 'local_see'
     model = Proyecto
     list_display = ("nombreProyecto", "año", "prueba2", "prueba",)
     search_fields = ['nombreProyecto']
@@ -96,14 +113,15 @@ class ProyectoAdmin(admin.ModelAdmin):
     prueba2.short_description = 'Entidades Vinculadas' 
 
 
-@admin.register(Imagen_Proyecto)
+"""@admin.register(Imagen_Proyecto)
 class ProyectoImageAdmin(admin.ModelAdmin):
-    pass
+    pass"""
 
 
 
 @admin.register(ProyectoAnual)
 class ProyectoAnualAdmin(admin.ModelAdmin):
+    icon_name = 'developer_board'
     model = ProyectoAnual
     list_display = ("titulo", "año", "status",)
     list_filter = [ 'status']
@@ -112,20 +130,4 @@ class ProyectoAnualAdmin(admin.ModelAdmin):
    
  
 
-    
-
-class PostImageAdmin(admin.StackedInline):
-    model = Imagen_Nosotros
-
-@admin.register(Nosotros)
-class PostAdmin(admin.ModelAdmin):
-    inlines = [PostImageAdmin]
-
-    class Meta:
-       model = Nosotros
-
-@admin.register(Imagen_Nosotros)
-class PostImageAdmin(admin.ModelAdmin):
-    pass
-
- 
+   

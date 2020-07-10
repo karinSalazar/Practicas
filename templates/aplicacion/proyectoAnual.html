@@ -8,7 +8,13 @@
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-        <div class="d-flex justify-content-between align-items-center">          
+        <div class="d-flex justify-content-between align-items-center">   
+          <h2></h2>
+          <ol>
+            <li>Home</li>
+            <li><a href="#">Proyecto Anual</a></li>
+          </ol>
+        </div>       
         </div>
       </div>
     </section><!-- End Breadcrumbs -->
@@ -41,7 +47,7 @@
                           <div class="row">
                               <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
                 
-                                 {% if videofile %}
+                                 {% if promo.videofile %}
 
                                       <section class="view intro-video">
                                           <div class="wow fadeIn">
@@ -82,14 +88,8 @@
                                                                                         
                                                     <div class="col-md-6 text-center">
                                                         <div class="product"><br>                                            
-                                                                <img src="{{promo.entidades.logo.url}}" class="img-responsive" alt="#">
-                                                                <div class="portfolio-box-caption">
-                                                                    <div class="portfolio-box-caption-content">
-                                                                          <div class="portfolio-links">
-                                                                            <a target="_blank" href="{{promo.entidades.link}}" title="Más Detalles"><i class="bx bxs-hand-up"></i></a>
-                                                                          </div>
-                                                                    </div>
-                                                                </div>                                                                                    
+                                                                <a target="_blank" href="{{promo.entidades.link}}" title="Más Detalles"><img src="{{promo.entidades.logo.url}}" class="img-responsive" alt="#"></a>
+                                                                                                                                  
                                                         </div>
                                                     </div>
                                                     
