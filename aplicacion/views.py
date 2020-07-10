@@ -66,6 +66,7 @@ class AboutUs(TemplateView):
         context['enti'] = Entidad.objects.all()
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
+        context['numero'] = Impacto.objects.all()
         return context
 
 
