@@ -38,11 +38,11 @@
         <div class="portfolio-details-container">
 
             <div class="owl-carousel portfolio-details-carousel">
-              <img class="img-fluid"  src="{{ info.imagen.url }}" alt="">
+              <img class="img-fluid" src="{{ info.imagen.url }}" alt="">
             </div>
 
             <div class="portfolio-info">
-              <h3 class="text-uppercase">{{ info.titulo }}</h3>
+              <h3 class="text-uppercase text-justify">{{ info.titulo }}</h3>
                 <ul>
                   <li><strong>Autor </strong>: {{ info.creado_por }}</li>
                   <li><strong>Fecha </strong>: {{ info.fecha }} </li>
@@ -52,9 +52,9 @@
             </div>
 
         </div>               
-         
+         <br/>
         <div class="portfolio-description">
-          <h2 class="text-uppercase">{{ info.titulo }}</h2>
+          <h2 class="text-uppercase text-center estilo">{{ info.titulo }}</h2>
           <p class="text-justify">
             {{ info.body }}.
           </p>

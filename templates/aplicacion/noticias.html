@@ -37,11 +37,10 @@
                                     <div class="row align-items-center">
                                         <div class="col-md-6 mt-4 objetnoticias">
                                             <img src="{{ p.imagen.url }}" class="Rounded Corners" alt="...">
-
                                         </div>
                                         <div class="col-md-6">
                                             <div class="card-body p-0">
-                                                <h6 class="card-title text-center mt-4 text-uppercase" >{{ p.titulo }}</h6>
+                                                <h6 class="card-title text-center mt-4 text-uppercase estilo" >{{ p.titulo }}</h6>
                                                 <p class="card-text"><small class="text-muted">{{ p.fecha }} by {{p.creado_por}} </small></p>
                                                 <p class="card-text mb-0 text-justify">{{ p.descripcion|truncatechars:213 }}</p>
                                                 <a class="button button-skin" href="{% url 'aplicacion:infonoticia' p.id %}">Leer más...</a>     
@@ -77,19 +76,20 @@
                                 <!-- Dento Sidebar Area -->
                                 <div class="col-10 col-lg-3 col-12 col-md-8">
                                                              
-                                    <div class="dento-sidebar rounded" id="rcorners2">
+                                    <div class="sombraNoticias">
                                         <!-- Single Widget Area -->
                                         <div class="single-widget-area news-widget mt-4">
-                                            <h4 class="card-title text-center mt-4 mb-3 ">LOS MÁS DESTACADOS</h3>
+                                            <h4 class="card-title text-center mt-4 mb-3 estilo">LOS MÁS DESTACADOS</h3>
                                                 <br/>
                                             <!-- Single News Area -->
                                             {% for p in destacados %}
                                             <div class="single-news-area d-flex align-items-center row">
                                                 <div class="col-12 mb-4 blog-thumbnail">
-                                                    <img src="{{ p.imagen.url }}" class="img-thumbnail float-right" alt="" width="80" height="40">
-                                                    <div class="col-4 objetnot">
-                                                        <a class="post-title text-uppercase text-lg-center" title="{{ p.titulo }}" href="{% url 'aplicacion:infonoticia' p.id %}" >{{ p.titulo }}</a>
-                                                    </div>
+                                                    <img src="{{ p.imagen.url }}" class="img-thumbnail float-right" alt="" width="80" height="40">                                                       
+                                                        <div class="project-button">
+                                                            <a target="_blank" title="{{ p.titulo }}" href="{% url 'aplicacion:infonoticia' p.id %}" class="btn btn-skin"><i class="icofont-tick-boxed"></i></a>
+                                                        </div>
+                                                                                                         
                                                 </div>
 
                                             </div>
