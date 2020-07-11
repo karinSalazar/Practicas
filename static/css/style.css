@@ -941,7 +941,7 @@ section {
 }
 
 .counts .image {
-  background: url("../img/countsIndex.jpg") center center no-repeat;
+  background: url("../img/countsNosotros.jpg") center center no-repeat;
   background-size: cover;
   min-height: 400px;
 }
@@ -1716,11 +1716,11 @@ section {
 
 .sombra {
   margin: 5px auto;
-  border: 3px solid #1c1f02;
+  border: 1px solid #1c1f02;
   width: 500px;
   height: 550px;
   box-shadow:  
-    inset 0 0 0 3px #026e2d,
+    inset 0 0 0 3px #035e27, /*#026e2d,*/
     inset 0 0 5px 3px gold, 
     0 0 5px gold; 
   border-radius:1em/0.75em;
@@ -1771,26 +1771,8 @@ section {
     -1px -1px 3px #000;
   }
 
-  /*
-  display:inline-block;
-  background-image: inherit;
-  background-color:white;
-  background-position:top;
-  background-attachement:fixed;
-  margin:2em 1em;
-  padding:0 2.25em;
-  min-width:50%;
-  box-shadow:
-    inset 0 0 0 3px  purple,
-    inset 0 0 5px 3px gold, 
-    0 0 5px gold;    
-  position:relative;  
-  overflow:hidden;
-  border-radius:1em/0.75em;
-  color:peru;
-  text-shadow:
-    1px 1px 3px ivory, 
-    -1px -1px 3px #000;
-  transform:scale(1.5);
-  */
+.contento {
+  font-weight: 700;
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
 }
