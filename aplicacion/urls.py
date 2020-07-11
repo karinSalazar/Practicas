@@ -18,6 +18,7 @@ urlpatterns = [
     path('noticias/', Prensa.as_view(), name = 'noticia'),
     path('infonoticia/<int:pk>', InfoPrensa.as_view(), name= 'infonoticia'),
     path('contacto/', Contacto.as_view(), name='contacto'),
+    path('privacidad/', Privacidad.as_view(), name='privacidad'),
 
    
   ]

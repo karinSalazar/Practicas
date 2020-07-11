@@ -3,14 +3,13 @@ from .models import *
 from django.urls import reverse_lazy
 from django.views.generic import *
 from django.contrib.auth.models import User
-from .forms import ContactoForm
+from .forms import ContactoForm, VideoNosForm, VideoProForm
 from django.core.mail import send_mail
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from random import shuffle
-from .forms import VideoNosForm, VideoProForm
 
-from django.http import HttpResponse
+
 from django.db.models import Q
 
 
@@ -84,8 +83,7 @@ class ProgramaAnual(ListView):
         context['nos'] = Nosotros.objects.all()
         context['enti'] = Entidad.objects.all()
         context['anualId']=ProyectoAnual.objects.filter(id=parametro)
-        context['project'] = Proyecto.objects.all()
-       
+        context['project'] = Proyecto.objects.all()       
         return context
 
 
@@ -205,5 +203,15 @@ class Contacto(SuccessMessageMixin, FormView):
         return context
        
 
+class Privacidad(TemplateView):
+    template_name = 'aplicacion/politicaPrivac.html'   
 
-    
+    def get_context_data(self, **kwargs):
+        context = super(Privacidad, self).get_context_data(**kwargs)
+        context['nos'] = Nosotros.objects.all()
+        context['enti'] = Entidad.objects.all()
+        context['anual'] = ProyectoAnual.objects.all()
+        context['project'] = Proyecto.objects.all()
+        return context
+
+ 
