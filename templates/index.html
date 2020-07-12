@@ -129,7 +129,7 @@
               {% for pro in anual %} 
               {% if pro.status == True %}
             <div class="section-title text-center">
-              <p class="colores"> {{pro.titulo}} </p> 
+              <p class="colores"><a target="_blank" class="p-3 mb-2 bg-gradient-success text-dark" href="{% url 'aplicacion:proyectoAnual' pro.id %}"> {{pro.titulo}} </a></p> 
               <h2></h2>              
             </div>
             <div class="content wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">
@@ -151,7 +151,7 @@
                                   {{promo.entidades.nombreEntidad}}
                                 </div>
                                 <div class="project-button">
-                                  <a target="_blank" href="{% url 'aplicacion:proyectoAnual' pro.id %}" class="button button-skin">Read More</a>
+                                  <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" class="button button-skin">Read More</a>
                                 </div>
                                 <div class="portfolio-links">
                                   <a href="../../static/img/{{promo.imagen}}" data-gall="portfolioGallery" class="venobox" title="Proyecto del Año"><i class="bx bx-plus"></i></a>
