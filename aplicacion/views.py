@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from random import shuffle
 
 
-from django.db.models import Q
+
 
 
 
@@ -113,8 +113,8 @@ class Resources(ListView):
     template_name = 'aplicacion/recursos.html'
     context_object_name= 'res' 
     queryset = Recurso.objects.all()
-        
-
+    
+    
     def get_context_data(self, **kwargs):
         context = super(Resources, self).get_context_data(**kwargs)
         context['nos'] = Nosotros.objects.all()

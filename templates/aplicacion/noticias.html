@@ -41,7 +41,11 @@
                                         <div class="col-md-6">
                                             <div class="card-body p-0">
                                                 <h6 class="card-title text-center mt-4 text-uppercase estilo" >{{ p.titulo }}</h6>
+                                                  {% if p.fecha == null %}
+                                                <p class="card-text"><small class="text-muted">{{ p.created }} by {{p.creado_por}} </small></p>
+                                                  {% else %}
                                                 <p class="card-text"><small class="text-muted">{{ p.fecha }} by {{p.creado_por}} </small></p>
+                                                  {% endif %} 
                                                 <p class="card-text mb-0 text-justify">{{ p.descripcion|truncatechars:213 }}</p>
                                                 <a class="button button-skin" href="{% url 'aplicacion:infonoticia' p.id %}">Leer más...</a>     
                                                 

@@ -93,7 +93,7 @@ class Imagen_Proyecto(models.Model):
 
 class Noticia(models.Model):	
 	created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
-	updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")
+	#updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")
 	fecha = models.DateField(blank=True, null=True, verbose_name="Fecha")
 	creado_por = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Creado por")
 	link = models.URLField(max_length=500, blank=True)
@@ -106,7 +106,7 @@ class Noticia(models.Model):
 	class Meta:
 		verbose_name = 'Noticia'
 		verbose_name_plural = 'Noticias'
-		ordering = ["-fecha"] 
+		ordering = ["-created","-fecha"] 
 
 	def __str__(self):
 		return str(self.created) + " " + str(self.creado_por)+ " " + str(self.titulo)
