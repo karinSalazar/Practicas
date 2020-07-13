@@ -65,9 +65,9 @@ class MaterialCampaAdmin(admin.ModelAdmin):
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
     icon_name = 'cast_connected'
-    list_display = ("created", "titulo")
+    list_display = ("created", "fecha", "titulo", "creado_por", "destacados",)
     search_fields = ['titulo']
-    list_filter = ('created', 'creado_por','destacados')
+    list_filter = ('created','destacados')
     list_per_page = 10
     #exclude=("fecha ",)
 
@@ -175,7 +175,11 @@ class ProyectoAnualAdmin(admin.ModelAdmin):
     search_fields = ['titulo']
     history_list_display = ["titulo"]
     list_per_page = 10
+    #readonly_fields = ('status',)
    
- 
 
-   
+    def get_readonly_display(self, request, obj=None):
+           if obj:
+               return ['status']
+           else:
+               return []

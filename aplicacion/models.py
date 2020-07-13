@@ -40,7 +40,7 @@ class ProyectoAnual(models.Model):
 	titulo = models.CharField(max_length=40,null=True,verbose_name="Título del Proyecto del Año")
 	año = models.DateTimeField(auto_now_add=True, verbose_name="Año del Proyecto Anual")
 	descripcion = models.TextField(max_length=800,null=True,verbose_name="Descripción")
-	status =models.BooleanField(default=True,verbose_name="activo")
+	status =models.BooleanField(default=False,verbose_name="activo")
 		
 	class Meta:
 		verbose_name = 'Proyecto_Anual'
@@ -94,7 +94,7 @@ class Imagen_Proyecto(models.Model):
 class Noticia(models.Model):	
 	created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
 	#updated = models.DateTimeField(auto_now=True, verbose_name="Fecha de edición")
-	fecha = models.DateField(blank=True, null=True, verbose_name="Fecha")
+	fecha = models.DateField(blank=True, null=True, verbose_name="Fecha", editable=False)
 	creado_por = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Creado por")
 	link = models.URLField(max_length=500, blank=True)
 	titulo = models.CharField(max_length=100,blank=True, null=True,verbose_name="TÍtulo de la Noticia")
