@@ -62,6 +62,7 @@ class Proyecto(models.Model):
 	imagen = models.ImageField(upload_to = 'imagesProyecto/',verbose_name="Imagen General")
 	entidades = models.ForeignKey(Entidad, on_delete=models.CASCADE,null=True,verbose_name="Entidades Vinculado")
 	videofile = models.FileField(upload_to='videoProyecto/', blank=True, verbose_name="Video del Proyecto Anual")
+	link = models.URLField(max_length=500,null=True)
 	history = HistoricalRecords()
 	
 	class Meta:
@@ -101,7 +102,7 @@ class Noticia(models.Model):
 	descripcion = models.CharField(max_length=300,blank=True, null=True,verbose_name="Descripción de la Noticia")
 	imagen = models.ImageField(upload_to = 'noticia/', default = 'noticia.jpg',verbose_name="Imagen")
 	body = models.TextField(blank=True, null=True, verbose_name="Contenido de la Noticia")
-	destacados = models.BooleanField(default=False)
+	destacados = models.BooleanField(default=False, editable=False)
     		
 	class Meta:
 		verbose_name = 'Noticia'
@@ -125,6 +126,7 @@ class Recurso(models.Model):
 	class Meta:
 		verbose_name = 'Recurso'
 		verbose_name_plural = 'Recursos'
+		ordering = ["-nombreRecurso"]
 
 	def __str__(self):
 		return str(self.nombreRecurso)

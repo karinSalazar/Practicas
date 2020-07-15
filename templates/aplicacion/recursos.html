@@ -23,35 +23,14 @@
           <h2>Recursos</h2>
           <p>Nuestras Transferencias</p>
         </div>
-      
-		<form method="GET" action="{% url 'aplicacion:recurso'  %}">
-			{% csrf_token %}
-        <div class="form-row">
-            <div class="form-group col-12">
-                <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="q" id="buscador" placeholder="Escribe el nombre del proyecto o el recurso..." />
-                      <span class="input-group-append">
-                        <div class="input-group-text bg-transparent">
-                            <i class="icofont-search-2"></i>
-                        </div>
-                    </span>
-                </div>
-            </div>        
-        </div>
-    	</form>
-
-                
-
-
+     	
 <br/>
-
-          
 
         <div class="row"  id="myList">
         	{% for r in res %}
         	{% if r.status == True %}
 		          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-		            <div class="member imgRec" data-aos="fade-up" data-aos-delay="100">
+		            <div class="member" data-aos="fade-up" data-aos-delay="100">
 		              <div class="member-img objetrecursos">
 		                <img src="../../static{{r.imagen.url}}" class="img-fluid" alt="">
 		                <div class="social">

@@ -29,21 +29,21 @@
         <div class="row">
           {% for n in nos %} 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-              <img src="../../static/img/{{n.imagen}}" class="img-fluid imgNos" alt="">
+              <img src="../../static/img/{{n.imagen}}" class="img-fluid" alt="">
           </div>
           
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-            <h3 class="estilo text-uppercase">{{n.titulo}}.</h3>
+            <h3 class="text-uppercase">{{n.titulo}}.</h3>
 
             <p class="font-italic text-justify"> {{n.description}}. </p>
-            <h5 class="estilo">¿Quieres contáctarnos?</h5>
+            <h5 >¿Quieres contáctarnos?</h5>
             <br/>
             <ul>
               <li><i class="ri-phone-line"></i> {{n.tel}}.</li>
               <li><i class="ri-mail-line"></i> {{n.mail}}.</li>
             </ul>
             <br/>
-            <h5 class="estilo">¿Quienes la conforman?</h5> 
+            <h5>¿Quienes la conforman?</h5> 
           </div>          
           {% endfor %}
         </div>
@@ -84,12 +84,12 @@
       <br/>
       <div class="container" data-aos="fade-up">
         <div class="section-title">          
-          <p class="text-capitalize estilo">Nuestros Requisitos.</p>
+          <p class="text-capitalize">Nuestros Requisitos.</p>
         </div>
         <br/>
 
         <div class="row">
-          <div class="image col-lg-6 imgNos" style="background-image: url({% static 'img/featuresNosotros.jpg' %});" data-aos="fade-right"></div>
+          <div class="image col-lg-6" style="background-image: url({% static 'img/featuresNosotros.jpg' %});" data-aos="fade-right"></div>
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
               <i class="icofont-ui-calendar"></i>
@@ -123,12 +123,12 @@
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
         <div class="section-title">          
-          <p class="text-capitalize estilo">Impacto Social.</p>
+          <p class="text-capitalize">Impacto Social.</p>
         </div>
         <br/>
 
         <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start imgNos" data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
           <div class="col-xl-7 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
             <div class="content d-flex flex-column justify-content-center">
              

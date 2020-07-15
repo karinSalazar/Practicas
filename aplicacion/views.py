@@ -27,7 +27,7 @@ class Inicio(SuccessMessageMixin, FormView):
         contact_email = form.cleaned_data['contact_email']
         subject = form.cleaned_data['subject']
         message = "{0} tienes un nuevo mensaje:\n\n{1}".format(contact_name, form.cleaned_data['message'])
-        send_mail(subject, message, contact_email, ['karen_t195@hotmail.com'], fail_silently = False)
+        send_mail(subject, message, contact_email, ['eve.redjoven@gmail.com'], fail_silently = False)
         return super(Inicio, self).form_valid(form)
 
    
@@ -191,7 +191,7 @@ class Contacto(SuccessMessageMixin, FormView):
         contact_email = form.cleaned_data['contact_email']
         subject = form.cleaned_data['subject']
         message = "{0} tienes un nuevo mensaje:\n\n{1}".format(contact_name, form.cleaned_data['message'])
-        send_mail(subject, message, contact_email, ['karen_t195@hotmail.com'], fail_silently = False)
+        send_mail(subject, message, contact_email, ['eve.redjoven@gmail.com'], fail_silently = False)
         return super(Contacto, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -201,6 +201,7 @@ class Contacto(SuccessMessageMixin, FormView):
         context['anual'] = ProyectoAnual.objects.all()
         context['project'] = Proyecto.objects.all()
         return context
+       
        
 
 class Privacidad(TemplateView):

@@ -45,34 +45,22 @@
               
                         <div id="about" class="container about sombraProyecto" data-aos="fade-up">
                           <div class="row">
-                             
-                             <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">                
-                                       {% if promo.videofile %}
-                                            <section class="view intro-video">
-                                                <div class="wow fadeIn">
-                                                    <video class="video-fluid z-depth-300 " autoplay loop controls muted>
-                                                        <source class="embed-responsive-item" src=' {{ MEDIA_URL }}{{ promo.videofile }} ' type='video/mp4 ' 
-                                                            allowfullscreen="" frameborder="50|7000" />
-                                                    </video>
-                                                </div>
-                                                <script>
-                                                    'undefined ' === typeof _trfq || (window._trfq = []);
-                                                    'undefined ' === typeof _trfd && (window._trfd = []), _trfd.push({
-                                                        'tccl.baseHost ': 'secureserver.net '
-                                                    }), _trfd.push({
-                                                        'ap ': 'cpsh '
-                                                    }, {
-                                                        'server ': 'p3plcpnl0769 '
-                                                    })
-                                                </script>
-                                            </section>
-                                        {% endif %}
-                              </div>
-
-                              <br/>
-
-                              <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
-                                    <h3 class="text-uppercase estilo">{{promo.nombreProyecto}}.</h3>
+                                                                                    
+                               <div class="col-lg-4 order-1 order-lg-1" data-aos="fade-left" data-aos-delay="100">
+                                        <div class="portfolio-wrap">
+                                          <img src="{{promo.imagen.url}}" class="img-fluid" alt="">            
+                                          <div class="portfolio-info">
+                                             <p>{{promo.nombreProyecto}}</p>                                                        
+                                            <div class="portfolio-links">
+                                              <a target="_blank" href="{{promo.link}}" title="Ver Video"><i class="icofont-ui-video-play"></i></a>
+                                              <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" title="Ver Fotos"><i class="icofont-ui-camera"></i></a>
+                                            </div>                
+                                          </div>              
+                                        </div>                                                                    
+                              </div>                       
+                                                         
+                              <div class="col-lg-4 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                                    <h3 class="text-uppercase">{{promo.nombreProyecto}}.</h3>
                                     <p class="font-italic text-justify">{{promo.descripcion}}</p>
                                     <dl>
                                           {% autoescape off%}
@@ -80,20 +68,29 @@
                                                 <li><i class="ri-check-double-line"></i> {{promo.logros}}  </li>
                                                 <li><i class="bx bx-photo-album"></i> <a target="_blank" href="{% url 'aplicacion:proyecto' promo.id %}" title="Más Detalles">Ver Misceláneas</a></li>
                                               </ul>
-
-                                              <dt class="estilo">Entidad a Cargo:</dt>                                                                                        
-                                                    <div class="col-md-6 text-center">
-                                                        <div class="product"><br>                                            
-                                                                <a target="_blank" href="{{promo.entidades.link}}" title="Más Detalles"><img src="{{promo.entidades.logo.url}}" class="img-responsive" alt="#"></a>
-                                                        </div>
-                                                    </div>
-                                                    
-                                          {% endautoescape %}
+                                          {% endautoescape %}                                              
                                     </dl>
-
                               </div>
-
+                              <br/>
+                              <div class="col-lg-4 pt-4 pt-lg-0 order-3 order-lg-3 content" data-aos="fade-right" data-aos-delay="100">
+                                    <dl>
+                                        <dt >Entidad a Cargo:</dt>                                                                          
+                                            <div class="col-md-12 text-center">
+                                                <div class="product"><br>                                            
+                                                    <a target="_blank" href="{{promo.entidades.link}}" title="Más Detalles"><img src="{{promo.entidades.logo.url}}" class="img-responsive" alt="#"></a>
+                                                </div>
+                                            </div>                                                    
+                                          
+                                    </dl>
+                              </div>  
+                              <br/>                   
                           </div>
+                        </div>
+
+                              <br/>
+
+                             
+
                         </div>
             {% endif %} 
         {% endfor %} 

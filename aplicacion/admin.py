@@ -11,7 +11,7 @@ from django.contrib.admin import ModelAdmin, register
 @register(Colaborador)
 class MaterialInfoAdmin(admin.ModelAdmin):
     icon_name = 'group_add'
-    list_display = ( "nombreColaborador","logo","hipervínculo",)
+    list_display = ( "nombreColaborador","hipervínculo",) #"logo",
     search_fields = ['nombreColaborador']
     list_per_page = 10 #paginar
     
@@ -28,7 +28,7 @@ class MaterialInfoAdmin(admin.ModelAdmin):
 @register(Entidad)
 class MaterialTallerAdmin(admin.ModelAdmin):
     icon_name = 'account_balance'
-    list_display = ( "nombreEntidad","hipervínculo","logo")
+    list_display = ( "nombreEntidad","hipervínculo",) #"logo",
     search_fields = ['nombreEntidad']
     list_per_page = 10 
 
@@ -65,9 +65,9 @@ class MaterialCampaAdmin(admin.ModelAdmin):
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
     icon_name = 'cast_connected'
-    list_display = ("created", "fecha", "titulo", "creado_por", "destacados",)
+    list_display = ("created", "fecha", "titulo", "creado_por", )
     search_fields = ['titulo']
-    list_filter = ('created','destacados')
+    list_filter = ('created',)
     list_per_page = 10
     #exclude=("fecha ",)
 
@@ -97,7 +97,7 @@ class NoticiaAdmin(admin.ModelAdmin):
 @register(Testimonio)
 class MaterialEventoAdmin(admin.ModelAdmin):
     icon_name = 'insert_comment'
-    list_display = ( "nombre", "foto", "fecha", "entidad", "proyecto")
+    list_display = ( "nombre", "fecha", "entidad", "proyecto") #"foto",
     search_fields = ['nombre']
     list_filter = [ 'entidad','proyecto']
     list_per_page = 10 #paginar
