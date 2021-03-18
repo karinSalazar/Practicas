@@ -89,9 +89,9 @@ DATABASES = {
         'NAME': 'Red_Empleo',
         'CLIENT': {
             'host': 'mongodb+srv://admin:admin@clusterf5-gojhb.mongodb.net/test?retryWrites=true&w=majority',
-            'username': 'admin',
-            'password': 'admin',
-            'port' : 27017,
+            'username': 'user',
+            'password': 'password',
+            'port' : 28018,
         }
     }
 }
