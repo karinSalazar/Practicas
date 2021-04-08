@@ -2,7 +2,7 @@ whitenoise[brotli]
 
 django-simple-history
 django-embed-video
-Django==2.2.13
+Django==2.2.20
 
 django-material==1.6.3
 
